@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.insecure_update"
+ ],
+ "adversarial": false,
+ "note": "update over HTTP"
+}

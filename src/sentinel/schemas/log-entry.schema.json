@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:log-entry:v1",
+  "title": "Sentinel log-entry (v1)",
+  "type": "object",
+  "properties": {
+    "seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ts": {
+      "type": "integer"
+    },
+    "prev": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "event": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "data": {
+      "type": "object"
+    },
+    "hash": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "checkpoint": {
+      "type": "object",
+      "properties": {
+        "key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "signature": {
+          "$ref": "common.schema.json#/$defs/base64"
+        }
+      },
+      "required": [
+        "key_id",
+        "signature"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "data",
+    "event",
+    "hash",
+    "prev",
+    "seq",
+    "ts"
+  ],
+  "additionalProperties": false
+}

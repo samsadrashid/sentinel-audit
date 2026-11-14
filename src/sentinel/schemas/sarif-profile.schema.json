@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:sarif-profile:v1",
+  "title": "Sentinel sarif-profile (v1)",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "https://json.schemastore.org/sarif-2.1.0.json"
+    },
+    "version": {
+      "const": "2.1.0"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tool": {
+            "type": "object",
+            "properties": {
+              "driver": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "const": "Sentinel"
+                  },
+                  "version": {
+                    "type": "string",
+                    "maxLength": 4096
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 4096
+                        },
+                        "shortDescription": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 4096
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "shortDescription"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "rules",
+                  "version"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "driver"
+            ],
+            "additionalProperties": false
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ruleId": {
+                  "type": "string",
+                  "maxLength": 4096
+                },
+                "level": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "note",
+                    "none"
+                  ]
+                },
+                "message": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string",
+                      "maxLength": 4096
+                    }
+                  },
+                  "required": [
+                    "text"
+                  ],
+                  "additionalProperties": false
+                },
+                "locations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "physicalLocation": {
+                        "type": "object",
+                        "properties": {
+                          "artifactLocation": {
+                            "type": "object",
+                            "properties": {
+                              "uri": {
+                                "type": "string",
+                                "maxLength": 4096
+                              }
+                            },
+                            "required": [
+                              "uri"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "region": {
+                            "type": "object",
+                            "properties": {
+                              "startLine": {
+                                "type": "integer",
+                                "minimum": 1
+                              }
+                            },
+                            "required": [
+                              "startLine"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "artifactLocation",
+                          "region"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "physicalLocation"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "partialFingerprints": {
+                  "type": "object",
+                  "properties": {
+                    "sentinel/v1": {
+                      "$ref": "common.schema.json#/$defs/hex64"
+                    }
+                  },
+                  "required": [
+                    "sentinel/v1"
+                  ],
+                  "additionalProperties": false
+                },
+                "suppressions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "external"
+                      },
+                      "status": {
+                        "const": "accepted"
+                      },
+                      "justification": {
+                        "type": "string",
+                        "maxLength": 4096
+                      }
+                    },
+                    "required": [
+                      "justification",
+                      "kind",
+                      "status"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "severity": {
+                      "$ref": "common.schema.json#/$defs/severity"
+                    },
+                    "confidence": {
+                      "$ref": "common.schema.json#/$defs/confidence"
+                    },
+                    "state": {
+                      "$ref": "common.schema.json#/$defs/finding_state"
+                    },
+                    "origin": {
+                      "$ref": "common.schema.json#/$defs/finding_origin"
+                    }
+                  },
+                  "required": [
+                    "confidence",
+                    "origin",
+                    "severity",
+                    "state"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "level",
+                "locations",
+                "message",
+                "partialFingerprints",
+                "properties",
+                "ruleId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "invocations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "executionSuccessful": {
+                  "type": "boolean"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "audit_state": {
+                      "$ref": "common.schema.json#/$defs/audit_state"
+                    },
+                    "overall": {
+                      "$ref": "common.schema.json#/$defs/overall"
+                    }
+                  },
+                  "required": [
+                    "audit_state",
+                    "overall"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "executionSuccessful",
+                "properties"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "checks": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/check_result"
+                }
+              },
+              "disclaimer": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "checks_not_finished": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/check_result"
+                }
+              },
+              "domain_coverage": {
+                "$ref": "common.schema.json#/$defs/domain_coverage"
+              },
+              "limitations": {
+                "type": "string",
+                "maxLength": 4096
+              }
+            },
+            "required": [
+              "checks",
+              "disclaimer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "invocations",
+          "properties",
+          "results",
+          "tool"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 1
+    }
+  },
+  "required": [
+    "$schema",
+    "runs",
+    "version"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,11 @@
+{
+ "mcpServers": {
+  "x": {
+   "command": "node",
+   "args": [
+    "s.js@1.0.0"
+   ],
+   "description": "Reads issues from the tracker."
+  }
+ }
+}

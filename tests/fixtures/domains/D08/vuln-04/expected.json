@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "hardcoded-secret-key",
+   "file": "settings.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-backend-hardcoded-secret-key"
+   ]
+  }
+ ]
+}

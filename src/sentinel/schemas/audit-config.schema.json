@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:audit-config:v1",
+  "title": "Sentinel audit-config (v1)",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "$ref": "common.schema.json#/$defs/mode"
+    },
+    "level": {
+      "$ref": "common.schema.json#/$defs/level"
+    },
+    "activity_classes": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/activity_class"
+      },
+      "minItems": 1
+    },
+    "authorization_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 4096
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/scope_asset"
+          }
+        },
+        "exclusions": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        }
+      },
+      "required": [
+        "assets"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "scope"
+  ],
+  "additionalProperties": false
+}

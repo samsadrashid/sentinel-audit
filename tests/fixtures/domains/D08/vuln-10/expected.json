@@ -1,0 +1,27 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "requests-cve-2018-18074",
+   "file": "requirements.txt",
+   "any_of": [
+    "vuln:vuln.CVE-2018-18074"
+   ]
+  },
+  {
+   "id": "urllib3-cve-2019-11324",
+   "file": "requirements.txt",
+   "any_of": [
+    "vuln:vuln.CVE-2019-11324"
+   ]
+  },
+  {
+   "id": "jinja2-cve-2019-10906",
+   "file": "requirements.txt",
+   "any_of": [
+    "vuln:vuln.CVE-2019-10906"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+# D02 API (provisional, D-59). Sentinel-authored rules only (D-55), MIT.
+rules:
+  - id: sentinel-api-jwt-signature-not-verified
+    languages: [python]
+    severity: ERROR
+    message: JWT decoded without verifying its signature; any token is accepted.
+    pattern-either:
+      - pattern: 'jwt.decode(..., options={..., "verify_signature": False, ...}, ...)'
+      - pattern: jwt.decode(..., verify=False, ...)
+  - id: sentinel-api-cors-wildcard-with-credentials
+    languages: [python]
+    severity: ERROR
+    message: CORS allows every origin together with credentials.
+    pattern-either:
+      - pattern: flask_cors.CORS(..., origins="*", ..., supports_credentials=True, ...)
+      - pattern: flask_cors.CORS(..., supports_credentials=True, ..., origins="*", ...)
+  - id: sentinel-api-express-cors-wildcard-credentials
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: CORS allows every origin together with credentials.
+    pattern-either:
+      - pattern: 'cors({..., origin: "*", ..., credentials: true, ...})'
+      - pattern: 'cors({..., credentials: true, ..., origin: "*", ...})'
+  - id: sentinel-api-debug-server
+    languages: [python]
+    severity: WARNING
+    message: The API server runs with debug mode on (interactive debugger, stack traces).
+    pattern: $APP.run(..., debug=True, ...)
+  - id: sentinel-api-mass-assignment
+    languages: [python]
+    severity: WARNING
+    message: Request JSON is passed whole into a model constructor (mass assignment).
+    pattern-either:
+      - pattern: $MODEL(**flask.request.json)
+      - pattern: $MODEL(**flask.request.get_json(...))
+  - id: sentinel-api-jwt-none-algorithm
+    languages: [python]
+    severity: ERROR
+    message: The JWT "none" algorithm is accepted.
+    pattern: jwt.decode(..., algorithms=[..., "none", ...], ...)

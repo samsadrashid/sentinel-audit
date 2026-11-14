@@ -1,0 +1,97 @@
+[build-system]
+# Pinned to the exact backend already in use (no upgrade); transitive build pins live in
+# [tool.uv].build-constraint-dependencies and licenses/build-lock.txt (hash-pinned).
+requires = ["hatchling==1.33.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sentinel-audit"
+version = "0.1.0.dev1"
+description = "Sentinel Core Engine: deterministic, local-first security auditing engine (M1)."
+readme = "README.md"
+license = "MIT"
+# Third-party notices ship in the wheel (.dist-info/licenses/) and sdist; Sentinel's own MIT
+# license stays separate. Regenerate with `python scripts/license_audit.py notices`.
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES"]
+requires-python = ">=3.12"
+dependencies = [
+  # Ed25519 signatures for run keys, operator approvals and manifests (D-16, D-34).
+  "cryptography>=43,<47",
+]
+
+[project.scripts]
+sentinel = "sentinel.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.8,<1",
+  "mypy>=1.13,<2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sentinel"]
+
+# Explicit allowlist: the sdist carries only Sentinel's own sources, tests, docs and license material.
+# Local agent tooling (.ecc-src/, tools/, .claude/) and docs/private/ must never be redistributed.
+[tool.hatch.build.targets.sdist]
+only-include = [
+  "src/sentinel",
+  "tests",
+  "scripts",
+  "licenses",
+  "native",
+  "docs/architecture",
+  "docs/m1",
+  "docs/user",
+  "docs/m2",
+  "docs/m3",
+  "docs/roadmap",
+  "pyproject.toml",
+  "uv.lock",
+  "README.md",
+  "CHANGELOG.md",
+  "THIRD_PARTY_NOTICES",
+  "LICENSE",
+]
+# Build output and caches never ship, whatever the ignore files say; release_check.py verifies this.
+exclude = ["**/.build", "**/.swiftpm", "**/__pycache__", "**/*.pyc", "**/.DS_Store"]
+
+[tool.uv]
+# Build isolation resolves only these versions (they match licenses/build-lock.txt, checked by
+# scripts/license_audit.py). Other PEP 517 frontends ignore this table; use the hash-pinned lock.
+build-constraint-dependencies = [
+  "hatchling==1.33.0",
+  "packaging==26.3",
+  "pathspec==1.1.1",
+  "pluggy==1.7.0",
+  "tomlkit==0.15.2",
+  "trove-classifiers==2026.9.21.13",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+# Synthetic scanner fixtures are data: never reformat or lint them (they must match their generators).
+extend-exclude = ["tests/fixtures"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "S", "UP", "I"]
+ignore = ["S101", "S603", "S607"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/sentinel"]
+
+[[tool.mypy.overrides]]
+# Native analyzers run as standalone scripts and import their sibling helper module directly.
+module = ["_common", "axml", "android", "ios"]
+ignore_missing_imports = true

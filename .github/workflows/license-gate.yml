@@ -1,0 +1,37 @@
+# Release gate for third-party licensing (D-03). Fails the build on any unreviewed or changed
+# dependency, unpinned build dependency, missing attribution or license file, stale notices,
+# or wheel/sdist contents outside the allowlist.
+name: license-gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  license-gate:
+    runs-on: macos-26  # macos-14 was retired by GitHub on 2026-11-02
+    env:
+      SENTINEL_CI: "1"  # tests/test_license_audit.py: the wheel/sdist test must run, never skip
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, pinned by commit
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5, pinned by commit
+        with:
+          version: "0.11.17"
+      - name: Install locked dev environment (lockfile hashes enforced)
+        run: |
+          uv lock --check
+          uv sync --frozen --python 3.13
+      - name: Install hash-pinned build backend for inspection
+        run: |
+          uv venv --python 3.13 build/license-env
+          uv pip install --python build/license-env/bin/python --require-hashes -r licenses/build-lock.txt
+      - name: Strict license audit (inventory, notices, build pins, attribution)
+        run: .venv/bin/python scripts/license_audit.py check --strict
+      - name: License audit tests incl. real wheel and sdist contents
+        run: .venv/bin/python -m pytest tests/test_license_audit.py

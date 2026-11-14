@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:evidence-record:v1",
+  "title": "Sentinel evidence-record (v1)",
+  "type": "object",
+  "properties": {
+    "evidence_id": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "audit_id": {
+      "$ref": "common.schema.json#/$defs/store_audit_id"
+    },
+    "check_id": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "producer": {
+      "type": "object",
+      "properties": {
+        "adapter": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "adapter_version": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "scanner": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "scanner_version": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "binary_sha256": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "adapter",
+        "adapter_version",
+        "binary_sha256",
+        "scanner",
+        "scanner_version"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "revision": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "asset",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "authorization_ref": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "isolation_ref": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "collected_at": {
+      "type": "integer"
+    },
+    "redaction": {
+      "type": "object",
+      "properties": {
+        "engine": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "rules": {
+          "$ref": "common.schema.json#/$defs/string_list"
+        },
+        "counts": {
+          "$ref": "common.schema.json#/$defs/redaction_counts"
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "counts",
+        "engine",
+        "rules",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "parent": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      ]
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "truncated": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "audit_id",
+    "authorization_ref",
+    "check_id",
+    "collected_at",
+    "evidence_id",
+    "input",
+    "isolation_ref",
+    "parent",
+    "producer",
+    "redaction",
+    "size",
+    "truncated"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+ "domain": "D02",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "jwt-none-alg",
+   "file": "tok.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-api-jwt-none-algorithm"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "node-sql-concat",
+   "file": "db.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-node-query-concatenated"
+   ]
+  }
+ ]
+}

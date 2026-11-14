@@ -1,0 +1,7 @@
+{
+ "area": "t2",
+ "kind": "clean",
+ "expect": [],
+ "adversarial": false,
+ "note": "benign 'previous instructions'"
+}

@@ -1,0 +1,14 @@
+{
+ "mcpServers": {
+  "x": {
+   "command": "node",
+   "args": [
+    "s.js"
+   ],
+   "alwaysAllow": [
+    "write_file",
+    "exec"
+   ]
+  }
+ }
+}

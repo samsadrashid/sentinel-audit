@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:sign-request:v1",
+  "title": "Signing protocol v1 sign request, DM to signing device (D-49)",
+  "type": "object",
+  "properties": {
+    "envelope": {
+      "const": "sentinel/v1/sign-request"
+    },
+    "payload": {
+      "$ref": "common.schema.json#/$defs/approval_payload"
+    },
+    "payload_sha256": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "request_id": {
+      "$ref": "common.schema.json#/$defs/request_id"
+    }
+  },
+  "required": [
+    "envelope",
+    "payload",
+    "payload_sha256",
+    "request_id"
+  ],
+  "additionalProperties": false
+}

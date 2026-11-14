@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "ssrf",
+   "file": "fetch.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-backend-ssrf-request-url"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "payload": {
+  "action": "authorize_record",
+  "context": "sentinel/v1/approval/authorize_record",
+  "expires_at": 1800604800,
+  "issued_at": 1800000000,
+  "key_id": "ed25519:6e8867e6e7dfad3fd0811f3a43e9a784",
+  "nonce": "6bcfce57923c7690b796e108394adbb4",
+  "rationale": "test",
+  "revision": "record:rec-1:1",
+  "scope": {
+   "activity_classes": [
+    "A1",
+    "S1"
+   ],
+   "assets": [
+    {
+     "environment": "staging",
+     "id": "app",
+     "locator": "staging.app.test"
+    }
+   ],
+   "operations": [
+    "http.get"
+   ]
+  },
+  "subject": {
+   "sha256": "dc200bbbd2b34824ff83266ba04d08c7fb3175ff9ccd3ab3993b3f7d7160b65d",
+   "type": "authorization_record"
+  }
+ },
+ "signature": "ke2q/HpDxoBPGPg9MjoHl6qCOPBlPbAHDC7RwNBfGC4a+TwT4KPHbqWkGmsBEZiaG2lIC5jhdlWSTpVQgwjSCQ=="
+}

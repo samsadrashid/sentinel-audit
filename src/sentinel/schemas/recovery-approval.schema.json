@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:recovery-approval:v1",
+  "title": "Sentinel recovery approval: payload plus WebAuthn assertion (v1, D-47)",
+  "type": "object",
+  "properties": {
+    "payload": {
+      "$ref": "common.schema.json#/$defs/approval_payload"
+    },
+    "webauthn": {
+      "$ref": "common.schema.json#/$defs/webauthn_assertion"
+    }
+  },
+  "required": [
+    "payload",
+    "webauthn"
+  ],
+  "additionalProperties": false
+}

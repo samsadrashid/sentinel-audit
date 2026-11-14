@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:pending-request:v1",
+  "title": "Engine record of an emitted, not yet received sign request (D-49)",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "$ref": "common.schema.json#/$defs/request_id"
+    },
+    "payload": {
+      "$ref": "common.schema.json#/$defs/approval_payload"
+    },
+    "payload_sha256": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "emitted_at": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "received"
+      ]
+    },
+    "enrol_public_hex": {
+      "type": "string",
+      "pattern": "^04[0-9a-f]{128}$",
+      "$comment": "First enrolment only: the candidate operator key (P-256 X9.63)"
+    }
+  },
+  "required": [
+    "emitted_at",
+    "payload",
+    "payload_sha256",
+    "request_id",
+    "state"
+  ],
+  "additionalProperties": false
+}

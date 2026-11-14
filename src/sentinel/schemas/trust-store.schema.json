@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:trust-store:v1",
+  "title": "Sentinel trust-store (v1)",
+  "type": "object",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/operator_key"
+      }
+    }
+  },
+  "required": [
+    "keys"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "mongo-where",
+   "file": "search.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-mongo-where-operator"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "area": "mcp",
+ "kind": "clean",
+ "expect": [],
+ "adversarial": false,
+ "note": "non-secret env"
+}

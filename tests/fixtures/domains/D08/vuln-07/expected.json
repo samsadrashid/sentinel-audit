@@ -1,0 +1,20 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "shell",
+   "file": "jobs.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-python-subprocess-shell"
+   ]
+  },
+  {
+   "id": "pickle",
+   "file": "jobs.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-python-pickle-load"
+   ]
+  }
+ ]
+}

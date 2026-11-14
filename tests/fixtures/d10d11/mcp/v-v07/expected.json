@@ -1,0 +1,9 @@
+{
+ "area": "mcp",
+ "kind": "vulnerable",
+ "expect": [
+  "mcp.auto_approve"
+ ],
+ "adversarial": false,
+ "note": "tools pre-approved"
+}

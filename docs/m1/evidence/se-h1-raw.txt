@@ -1,0 +1,62 @@
+## sw_vers
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+## hw
+Mac15,6
+Apple M3 Pro
+arm64
+## swiftc
+swift-driver version: 1.168.6 Apple Swift version 6.4.2 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+Target: arm64-apple-macosx26.0
+## helper codesign
+Executable=/private/tmp/sentinel-se-h1.jJKPNH/helper
+Identifier=helper-55554944ed4bd803f6753db199d9d82f773b8316
+Format=Mach-O thin (arm64)
+CodeDirectory v=20400 size=488 flags=0x2(adhoc) hashes=9+2 location=embedded
+Signature=adhoc
+Info.plist=not bound
+TeamIdentifier=not set
+Sealed Resources=none
+Internal requirements count=0 size=12
+Executable=/private/tmp/sentinel-se-h1.jJKPNH/helper
+## attacker codesign
+Executable=/private/tmp/sentinel-se-h1.jJKPNH/attacker
+Identifier=attacker-55554944f335c28a7e4a35fd983816953f25efd7
+Format=Mach-O thin (arm64)
+CodeDirectory v=20400 size=394 flags=0x2(adhoc) hashes=6+2 location=embedded
+Signature=adhoc
+Info.plist=not bound
+TeamIdentifier=not set
+Sealed Resources=none
+Internal requirements count=0 size=12
+Executable=/private/tmp/sentinel-se-h1.jJKPNH/attacker
+## sha256
+a54124fc95cd9a729c5bc1dd275c195fd996944e73510520c0d01f09b7529f91  helper
+49a1241d2af8db5e3f79fa41f0beff0130f6d7691d0050e201de5ad04bd1995e  attacker
+## helper create.json (public part only)
+{'public_x963_hex': '04b36bf80fec5b46d58f7eaecafb95cfa0b238bbd69d5be94ccaefbcd5c3303d78b543250a07ee588b1a383a3a92b53005708e64d783c4ad9edcf93aa48596159f'} handle_bytes=429
+## attacker output (custom reason)
+{"auth":{"evaluate_error":null,"evaluate_ok":true,"mode":"custom"},"loaded":true,"message_b64":"U0UtSDEgQVRUQUNLRVItQ0hPU0VOIFBBWUxPQUQgRTU3Qjg3RDgtNTBCNi00MTRFLTk1QzItQThDRTNBMzcxNTQ1","public_x963_hex":"04b36bf80fec5b46d58f7eaecafb95cfa0b238bbd69d5be94ccaefbcd5c3303d78b543250a07ee588b1a383a3a92b53005708e64d783c4ad9edcf93aa48596159f","signature_der_b64":"MEUCIQDfuu2yJ2ztbiu8H2DJggM6Db\/2MtchtNzKMbwKO49D2gIgfz3\/\/8+t2VgefbU8sDY3QsaSksCsFjhmJXn0U9udxB8=","signed":true,"stage":"signed"}
+## signature verification (Sentinel venv, cryptography ECDSA P-256/SHA-256)
+helper public == attacker public: True
+signed message: SE-H1 ATTACKER-CHOSEN PAYLOAD E57B87D8-50B6-414E-95C2-A8CE3A371545
+signature VERIFIES against the disposable public key
+control: same signature over a modified message fails
+## cleanup
+trap on Ctrl-C printed: cleanup: removed /tmp/sentinel-se-h1.jJKPNH
+ls -d /tmp/sentinel-se-h1.*  -> no matches; ~/.local/state/sentinel -> does not exist
+## Design A probes (separate disposable dir /tmp/sentinel-se01-probe.6W2QTo, removed afterwards)
+P1 ad-hoc, no entitlements: SecKeyCreateRandomKey(SE token, kSecUseDataProtectionKeychain, kSecAttrAccessGroup=SE01TEST.org.sentinel.se01, .privateKeyUsage+.biometryCurrentSet)
+  -> created=false, OSStatus -34018 "failed to add key to keychain: <SecKeyRef:('com.apple.setoken')>"; SecItemCopyMatching in group -> -34018
+P2 ad-hoc, self-claimed keychain-access-groups entitlement, no provisioning profile:
+  -> process killed at launch, exit 137 (SIGKILL); no output
+## SE-02 round 2 (disposable dir /tmp/sentinel-se02.s7bzlc, removed)
+identity: "Apple Development: <owner Apple ID, redacted> (<certificate ID>)", subject OU (team) <TEAM-ID>, valid 2026-06-10..2027-06-10, issuer Apple WWDR CA G3
+provisioning profiles on host: none (~/Library/MobileDevice/Provisioning Profiles absent; none under Xcode UserData/DerivedData)
+codesign with that identity: succeeded 3x non-interactively from the agent session (no keychain prompt), --timestamp=none
+D1 team-signed, no entitlements: SecKeyCreateRandomKey(DP keychain, group <TEAM-ID>.org.sentinel.se02) -> -34018; lookup -34018
+D2 team-signed + keychain-access-groups=[<TEAM-ID>.org.sentinel.se02], no profile: killed at launch, exit 137
+D3 team-signed + application-identifier + team-identifier + keychain-access-groups, no profile: killed at launch, exit 137
+unified log (incl. --info --debug): no AMFI/kill entry visible to this user
+login keychain items matching se02 after test: 0

@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "ssti",
+   "file": "app.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-flask-template-string"
+   ]
+  }
+ ]
+}

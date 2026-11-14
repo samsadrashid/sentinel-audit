@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.open_messaging"
+ ],
+ "adversarial": false,
+ "note": "any page can message"
+}

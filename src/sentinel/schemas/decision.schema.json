@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:decision:v1",
+  "title": "Sentinel decision (v1)",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "suppress"
+        },
+        "entry": {
+          "$ref": "common.schema.json#/$defs/suppress_entry"
+        },
+        "approval": {
+          "$ref": "common.schema.json#/$defs/approval_file"
+        }
+      },
+      "required": [
+        "approval",
+        "entry",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "accept_risk"
+        },
+        "entry": {
+          "$ref": "common.schema.json#/$defs/accept_risk_entry"
+        },
+        "approval": {
+          "$ref": "common.schema.json#/$defs/approval_file"
+        }
+      },
+      "required": [
+        "approval",
+        "entry",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "review"
+        },
+        "entry": {
+          "type": "null"
+        },
+        "approval": {
+          "$ref": "common.schema.json#/$defs/approval_file"
+        }
+      },
+      "required": [
+        "approval",
+        "entry",
+        "kind"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "node-path-traversal",
+   "file": "srv.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-backend-node-path-traversal"
+   ]
+  }
+ ]
+}

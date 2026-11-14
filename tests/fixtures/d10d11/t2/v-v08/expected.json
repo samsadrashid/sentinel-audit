@@ -1,0 +1,9 @@
+{
+ "area": "t2",
+ "kind": "vulnerable",
+ "expect": [
+  "agent.hidden_unicode"
+ ],
+ "adversarial": false,
+ "note": "tag characters"
+}

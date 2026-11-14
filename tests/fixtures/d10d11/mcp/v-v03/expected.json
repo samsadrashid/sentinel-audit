@@ -1,0 +1,9 @@
+{
+ "area": "mcp",
+ "kind": "vulnerable",
+ "expect": [
+  "mcp.inline_secret"
+ ],
+ "adversarial": false,
+ "note": "token inline"
+}

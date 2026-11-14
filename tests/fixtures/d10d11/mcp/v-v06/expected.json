@@ -1,0 +1,9 @@
+{
+ "area": "mcp",
+ "kind": "vulnerable",
+ "expect": [
+  "mcp.unpinned_server"
+ ],
+ "adversarial": false,
+ "note": "uvx without version"
+}

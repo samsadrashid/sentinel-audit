@@ -1,0 +1,9 @@
+{
+ "area": "agent",
+ "kind": "vulnerable",
+ "expect": [
+  "agent.no_sandbox"
+ ],
+ "adversarial": false,
+ "note": "sandbox off"
+}

@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "markup-unescaped",
+   "file": "views.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-markup-unescaped"
+   ]
+  }
+ ]
+}

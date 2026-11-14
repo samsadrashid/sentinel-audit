@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ide.untrusted_workspace"
+ ],
+ "adversarial": false,
+ "note": "runs in untrusted workspaces"
+}

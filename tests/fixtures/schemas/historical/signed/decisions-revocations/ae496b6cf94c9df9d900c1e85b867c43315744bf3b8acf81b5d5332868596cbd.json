@@ -1,0 +1,19 @@
+{
+ "payload": {
+  "action": "revoke_record",
+  "context": "sentinel/v1/approval/revoke_record",
+  "expires_at": 1800003600,
+  "issued_at": 1800000000,
+  "key_id": "ed25519:6e8867e6e7dfad3fd0811f3a43e9a784",
+  "nonce": "161dbc800bd9e3b877a1ab76aecb956f",
+  "rationale": "withdrawn by owner after review",
+  "revision": "commit:hist",
+  "scope": {},
+  "subject": {
+   "decision_id": "ae496b6cf94c9df9d900c1e85b867c43315744bf3b8acf81b5d5332868596cbd",
+   "entry_sha256": "af661b94868f3b4f0925a6b0e66857f97698338970a6b288ecd4db6b238b285d",
+   "type": "decision"
+  }
+ },
+ "signature": "gcY3o4gPO9H+gdU2MJSOdcP9eVv7XCKCmltMUcyTYC+T2Ta35s9yVWhcXGGIONTlV/F001HjaRqjtII82CXCBw=="
+}

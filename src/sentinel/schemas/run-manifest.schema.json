@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:run-manifest:v1",
+  "title": "Sentinel run-manifest (v1)",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version_1"
+    },
+    "audit_id": {
+      "$ref": "common.schema.json#/$defs/run_id"
+    },
+    "sentinel_version": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "python": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "host": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "platform"
+      ],
+      "additionalProperties": false
+    },
+    "revision": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "mode": {
+      "$ref": "common.schema.json#/$defs/mode"
+    },
+    "level": {
+      "$ref": "common.schema.json#/$defs/level"
+    },
+    "scope": {
+      "$ref": "common.schema.json#/$defs/target"
+    },
+    "authorization_ref": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "policy_source": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "limits": {
+      "$ref": "common.schema.json#/$defs/limits"
+    },
+    "adapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "binary_sha256": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "engine_owned": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "binary_sha256",
+          "engine_owned",
+          "name",
+          "version"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "vulnerability_db_snapshots": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "common.schema.json#/$defs/hex64"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/check_result"
+      }
+    },
+    "state": {
+      "$ref": "common.schema.json#/$defs/audit_state"
+    },
+    "overall": {
+      "$ref": "common.schema.json#/$defs/overall"
+    },
+    "finding_fingerprints": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/hex64"
+      }
+    },
+    "result_sha256": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "evidence_index": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-f]{64}$": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "audit_log_head": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "run_key_id": {
+      "$ref": "common.schema.json#/$defs/key_id"
+    },
+    "host_isolation": {
+      "$ref": "common.schema.json#/$defs/host_report"
+    }
+  },
+  "required": [
+    "adapters",
+    "audit_id",
+    "audit_log_head",
+    "authorization_ref",
+    "checks",
+    "evidence_index",
+    "finding_fingerprints",
+    "host",
+    "host_isolation",
+    "level",
+    "limits",
+    "mode",
+    "overall",
+    "policy_source",
+    "python",
+    "result_sha256",
+    "revision",
+    "run_key_id",
+    "schema_version",
+    "scope",
+    "sentinel_version",
+    "state",
+    "vulnerability_db_snapshots"
+  ],
+  "additionalProperties": false
+}

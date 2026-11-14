@@ -1,0 +1,1 @@
+{"tool": "sentinel-fixture", "version": "1.0.0", "findings": [{"rule": "fixture.marker", "file": "a.txt", "line": 2, "message": "fixture marker present", "severity": "medium"}]}

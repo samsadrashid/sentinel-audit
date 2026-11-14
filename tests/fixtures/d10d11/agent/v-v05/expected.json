@@ -1,0 +1,9 @@
+{
+ "area": "agent",
+ "kind": "vulnerable",
+ "expect": [
+  "agent.auto_trust_project_mcp"
+ ],
+ "adversarial": false,
+ "note": "repo enables its own servers"
+}

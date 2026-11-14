@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "template-safe",
+   "file": "templates/profile.html",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-template-safe-filter"
+   ]
+  }
+ ]
+}

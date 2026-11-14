@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.broad_host_access"
+ ],
+ "adversarial": false,
+ "note": "reads every site"
+}

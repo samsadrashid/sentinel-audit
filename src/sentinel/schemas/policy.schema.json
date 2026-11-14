@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:policy:v1",
+  "title": "Sentinel policy (v1)",
+  "type": "object",
+  "properties": {
+    "limits": {
+      "$ref": "common.schema.json#/$defs/limits_partial"
+    },
+    "adapter_allowlist": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 64,
+        "maxLength": 64
+      }
+    },
+    "owned_assets": {
+      "$ref": "common.schema.json#/$defs/string_list"
+    },
+    "se_helper_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 64
+    },
+    "redaction_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "regex": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "required": [
+          "name",
+          "regex"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 32
+    },
+    "scanners": {
+      "type": "object",
+      "patternProperties": {
+        "^(?:gitleaks|semgrep|osv-scanner|syft|trivy|checkov|grype)$": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "binary"
+                },
+                "path": {
+                  "type": "string",
+                  "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+                },
+                "sha256": {
+                  "$ref": "common.schema.json#/$defs/hex64"
+                }
+              },
+              "required": [
+                "kind",
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "image"
+                },
+                "image": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9._/-]{0,200}@sha256:[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "image",
+                "kind"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "podman": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+        },
+        "sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        },
+        "probe_image": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._/-]{0,200}@sha256:[0-9a-f]{64}$"
+        },
+        "machine": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,40}$"
+        }
+      },
+      "required": [
+        "machine",
+        "path",
+        "probe_image",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "osv_database": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+        },
+        "manifest_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "trivy_database": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+        },
+        "manifest_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "grype_database": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+        },
+        "manifest_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "plugins": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z][a-z0-9-]{1,40}$": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^/[A-Za-z0-9._/@+=~ -]{1,1000}$"
+            },
+            "manifest_sha256": {
+              "$ref": "common.schema.json#/$defs/hex64"
+            }
+          },
+          "required": [
+            "manifest_sha256",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "b2": {
+      "type": "object",
+      "properties": {
+        "machine": {
+          "type": "string",
+          "maxLength": 41
+        },
+        "image_id": {
+          "type": "string",
+          "maxLength": 71
+        }
+      },
+      "required": [
+        "image_id",
+        "machine"
+      ],
+      "additionalProperties": false
+    },
+    "mobsf": {
+      "type": "object",
+      "properties": {
+        "machine": {
+          "type": "string",
+          "maxLength": 41
+        },
+        "image_id": {
+          "type": "string",
+          "maxLength": 71
+        }
+      },
+      "required": [
+        "image_id",
+        "machine"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

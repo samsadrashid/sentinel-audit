@@ -1,0 +1,13 @@
+{
+ "domain": "D02",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "cors-wildcard-creds",
+   "file": "api.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-api-cors-wildcard-with-credentials"
+   ]
+  }
+ ]
+}

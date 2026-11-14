@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.manifest_v2"
+ ],
+ "adversarial": false,
+ "note": "legacy MV2"
+}

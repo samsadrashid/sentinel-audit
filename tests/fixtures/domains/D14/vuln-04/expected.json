@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "sql-format",
+   "file": "repo4.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-sql-built-from-strings"
+   ]
+  }
+ ]
+}

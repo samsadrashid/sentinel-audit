@@ -1,0 +1,9 @@
+{
+ "area": "agent",
+ "kind": "vulnerable",
+ "expect": [
+  "agent.dangerous_allow"
+ ],
+ "adversarial": true,
+ "note": "adversarial: interpreter one-liners"
+}

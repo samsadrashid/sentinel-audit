@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ide.dependency_unpinned"
+ ],
+ "adversarial": false,
+ "note": "git dependency"
+}

@@ -1,0 +1,9 @@
+{
+ "area": "t2",
+ "kind": "vulnerable",
+ "expect": [
+  "agent.prompt_injection"
+ ],
+ "adversarial": false,
+ "note": "pipe to shell"
+}

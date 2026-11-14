@@ -1,0 +1,54 @@
+# D01 Web (provisional, D-59). Sentinel-authored rules only (D-55), MIT.
+rules:
+  - id: sentinel-web-innerhtml-assignment
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: Assigning non-literal content to innerHTML or outerHTML allows DOM cross-site scripting.
+    patterns:
+      - pattern-either:
+          - pattern: $EL.innerHTML = $X
+          - pattern: $EL.outerHTML = $X
+      - pattern-not: $EL.innerHTML = "..."
+      - pattern-not: $EL.outerHTML = "..."
+  - id: sentinel-web-document-write
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: document.write with non-literal content allows DOM cross-site scripting.
+    patterns:
+      - pattern: document.write($X)
+      - pattern-not: document.write("...")
+  - id: sentinel-web-react-dangerous-html
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: dangerouslySetInnerHTML renders raw HTML; sanitise it or avoid it.
+    pattern-regex: dangerouslySetInnerHTML\s*=
+  - id: sentinel-web-flask-template-string
+    languages: [python]
+    severity: ERROR
+    message: render_template_string with non-literal input allows server-side template injection.
+    patterns:
+      - pattern: flask.render_template_string($X, ...)
+      - pattern-not: flask.render_template_string("...", ...)
+  - id: sentinel-web-markup-unescaped
+    languages: [python]
+    severity: WARNING
+    message: Markup() marks non-literal content as safe HTML, bypassing auto-escaping.
+    patterns:
+      - pattern-either:
+          - pattern: markupsafe.Markup($X)
+          - pattern: flask.Markup($X)
+      - pattern-not: markupsafe.Markup("...")
+  - id: sentinel-web-open-redirect
+    languages: [python]
+    severity: WARNING
+    message: Redirect target taken from the request allows open redirects.
+    pattern-either:
+      - pattern: flask.redirect(flask.request.args.get(...), ...)
+      - pattern: flask.redirect(flask.request.args[...], ...)
+  - id: sentinel-web-template-safe-filter
+    languages: [generic]
+    severity: WARNING
+    message: The |safe filter disables auto-escaping in a template.
+    paths:
+      include: ["*.html", "*.jinja", "*.jinja2", "*.j2"]
+    pattern-regex: \{\{[^}]*\|\s*safe\s*\}\}

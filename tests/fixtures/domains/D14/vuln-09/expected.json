@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "db-no-tls",
+   "file": "conn.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-connection-without-tls"
+   ]
+  }
+ ]
+}

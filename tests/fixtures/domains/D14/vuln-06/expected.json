@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "sqlalchemy-text",
+   "file": "store.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-sqlalchemy-text-formatted"
+   ]
+  }
+ ]
+}

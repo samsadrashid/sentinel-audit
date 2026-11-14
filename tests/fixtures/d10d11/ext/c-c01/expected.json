@@ -1,0 +1,7 @@
+{
+ "area": "ext",
+ "kind": "clean",
+ "expect": [],
+ "adversarial": false,
+ "note": "narrow host"
+}

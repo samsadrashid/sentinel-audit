@@ -1,0 +1,857 @@
+{
+ "domains": {
+  "D01": {
+   "checks_not_completed": [],
+   "clean_fixtures": 10,
+   "clean_fixtures_with_false_positives": 0,
+   "coverage_states": {
+    "FULL": 16,
+    "NOT_APPLICABLE": 4
+   },
+   "detected_issues": 11,
+   "expected_issues": 11,
+   "false_positive_findings": 0,
+   "false_positive_fixture_rate": 0.0,
+   "fixtures": [
+    {
+     "false_positives": [],
+     "fixture": "clean-01"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-02"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-03"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-04"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-05"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-06"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-07"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-08"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-09"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-10"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-innerhtml-assignment"
+       ],
+       "detected": true,
+       "id": "dom-xss-innerhtml"
+      }
+     ],
+     "fixture": "vuln-01"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-innerhtml-assignment"
+       ],
+       "detected": true,
+       "id": "dom-xss-outerhtml"
+      }
+     ],
+     "fixture": "vuln-02"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-document-write"
+       ],
+       "detected": true,
+       "id": "dom-xss-document-write"
+      }
+     ],
+     "fixture": "vuln-03"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-react-dangerous-html"
+       ],
+       "detected": true,
+       "id": "react-raw-html"
+      }
+     ],
+     "fixture": "vuln-04"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-flask-template-string"
+       ],
+       "detected": true,
+       "id": "ssti"
+      }
+     ],
+     "fixture": "vuln-05"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-markup-unescaped"
+       ],
+       "detected": true,
+       "id": "markup-unescaped"
+      }
+     ],
+     "fixture": "vuln-06"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-open-redirect"
+       ],
+       "detected": true,
+       "id": "open-redirect"
+      }
+     ],
+     "fixture": "vuln-07"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-template-safe-filter"
+       ],
+       "detected": true,
+       "id": "template-safe"
+      }
+     ],
+     "fixture": "vuln-08"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-js-eval"
+       ],
+       "detected": true,
+       "id": "js-eval"
+      }
+     ],
+     "fixture": "vuln-09"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-innerhtml-assignment"
+       ],
+       "detected": true,
+       "id": "dom-xss-innerhtml-2"
+      },
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-web-document-write"
+       ],
+       "detected": true,
+       "id": "dom-xss-document-write-2"
+      }
+     ],
+     "fixture": "vuln-10"
+    }
+   ],
+   "recall": 1.0,
+   "required_checks": {
+    "semgrep": [
+     "FAIL",
+     "PASS"
+    ]
+   },
+   "validated_checks": [
+    "semgrep:semgrep.sentinel-js-eval",
+    "semgrep:semgrep.sentinel-web-document-write",
+    "semgrep:semgrep.sentinel-web-flask-template-string",
+    "semgrep:semgrep.sentinel-web-innerhtml-assignment",
+    "semgrep:semgrep.sentinel-web-markup-unescaped",
+    "semgrep:semgrep.sentinel-web-open-redirect",
+    "semgrep:semgrep.sentinel-web-react-dangerous-html",
+    "semgrep:semgrep.sentinel-web-template-safe-filter"
+   ]
+  },
+  "D02": {
+   "checks_not_completed": [],
+   "clean_fixtures": 10,
+   "clean_fixtures_with_false_positives": 0,
+   "coverage_states": {
+    "FULL": 20
+   },
+   "detected_issues": 11,
+   "expected_issues": 11,
+   "false_positive_findings": 0,
+   "false_positive_fixture_rate": 0.0,
+   "fixtures": [
+    {
+     "false_positives": [],
+     "fixture": "clean-01"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-02"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-03"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-04"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-05"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-06"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-07"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-08"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-09"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-10"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-jwt-signature-not-verified"
+       ],
+       "detected": true,
+       "id": "jwt-unverified"
+      }
+     ],
+     "fixture": "vuln-01"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-jwt-signature-not-verified"
+       ],
+       "detected": true,
+       "id": "jwt-verify-false"
+      }
+     ],
+     "fixture": "vuln-02"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-cors-wildcard-with-credentials"
+       ],
+       "detected": true,
+       "id": "cors-wildcard-creds"
+      }
+     ],
+     "fixture": "vuln-03"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-express-cors-wildcard-credentials"
+       ],
+       "detected": true,
+       "id": "express-cors-wildcard-creds"
+      }
+     ],
+     "fixture": "vuln-04"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-debug-server"
+       ],
+       "detected": true,
+       "id": "debug-server"
+      }
+     ],
+     "fixture": "vuln-05"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-mass-assignment"
+       ],
+       "detected": true,
+       "id": "mass-assignment"
+      }
+     ],
+     "fixture": "vuln-06"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-jwt-none-algorithm"
+       ],
+       "detected": true,
+       "id": "jwt-none-alg"
+      }
+     ],
+     "fixture": "vuln-07"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-python-tls-verify-disabled"
+       ],
+       "detected": true,
+       "id": "tls-verify-disabled"
+      }
+     ],
+     "fixture": "vuln-08"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-mass-assignment"
+       ],
+       "detected": true,
+       "id": "mass-assignment-2"
+      }
+     ],
+     "fixture": "vuln-09"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-jwt-signature-not-verified"
+       ],
+       "detected": true,
+       "id": "jwt-unverified-2"
+      },
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-api-debug-server"
+       ],
+       "detected": true,
+       "id": "debug-server-2"
+      }
+     ],
+     "fixture": "vuln-10"
+    }
+   ],
+   "recall": 1.0,
+   "required_checks": {
+    "semgrep": [
+     "FAIL",
+     "PASS"
+    ]
+   },
+   "validated_checks": [
+    "semgrep:semgrep.sentinel-api-cors-wildcard-with-credentials",
+    "semgrep:semgrep.sentinel-api-debug-server",
+    "semgrep:semgrep.sentinel-api-express-cors-wildcard-credentials",
+    "semgrep:semgrep.sentinel-api-jwt-none-algorithm",
+    "semgrep:semgrep.sentinel-api-jwt-signature-not-verified",
+    "semgrep:semgrep.sentinel-api-mass-assignment",
+    "semgrep:semgrep.sentinel-python-tls-verify-disabled"
+   ]
+  },
+  "D08": {
+   "checks_not_completed": [],
+   "clean_fixtures": 10,
+   "clean_fixtures_with_false_positives": 0,
+   "coverage_states": {
+    "FULL": 20
+   },
+   "detected_issues": 13,
+   "expected_issues": 13,
+   "false_positive_findings": 0,
+   "false_positive_fixture_rate": 0.0,
+   "fixtures": [
+    {
+     "false_positives": [],
+     "fixture": "clean-01"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-02"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-03"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-04"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-05"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-06"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-07"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-08"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-09"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-10"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-ssrf-request-url"
+       ],
+       "detected": true,
+       "id": "ssrf"
+      }
+     ],
+     "fixture": "vuln-01"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-path-traversal"
+       ],
+       "detected": true,
+       "id": "path-traversal"
+      }
+     ],
+     "fixture": "vuln-02"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-insecure-tempfile"
+       ],
+       "detected": true,
+       "id": "mktemp"
+      }
+     ],
+     "fixture": "vuln-03"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-hardcoded-secret-key"
+       ],
+       "detected": true,
+       "id": "hardcoded-secret-key"
+      }
+     ],
+     "fixture": "vuln-04"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-xml-external-entities"
+       ],
+       "detected": true,
+       "id": "xxe"
+      }
+     ],
+     "fixture": "vuln-05"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-backend-node-path-traversal"
+       ],
+       "detected": true,
+       "id": "node-path-traversal"
+      }
+     ],
+     "fixture": "vuln-06"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-python-subprocess-shell"
+       ],
+       "detected": true,
+       "id": "shell"
+      },
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-python-pickle-load"
+       ],
+       "detected": true,
+       "id": "pickle"
+      }
+     ],
+     "fixture": "vuln-07"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "checkov:checkov.CKV_DOCKER_3"
+       ],
+       "detected": true,
+       "id": "container-root-user"
+      }
+     ],
+     "fixture": "vuln-08"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "checkov:checkov.CKV_AWS_24"
+       ],
+       "detected": true,
+       "id": "ssh-open-world"
+      }
+     ],
+     "fixture": "vuln-09"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "vuln:vuln.CVE-2018-18074"
+       ],
+       "detected": true,
+       "id": "requests-cve-2018-18074"
+      },
+      {
+       "by": [
+        "vuln:vuln.CVE-2019-11324"
+       ],
+       "detected": true,
+       "id": "urllib3-cve-2019-11324"
+      },
+      {
+       "by": [
+        "vuln:vuln.CVE-2019-10906"
+       ],
+       "detected": true,
+       "id": "jinja2-cve-2019-10906"
+      }
+     ],
+     "fixture": "vuln-10"
+    }
+   ],
+   "recall": 1.0,
+   "required_checks": {
+    "checkov": [
+     "FAIL",
+     "NOT_APPLICABLE no_input",
+     "PASS"
+    ],
+    "grype": [
+     "FAIL",
+     "PASS"
+    ],
+    "osv-scanner": [
+     "FAIL",
+     "NOT_APPLICABLE no_input",
+     "PASS"
+    ],
+    "semgrep": [
+     "FAIL",
+     "PASS"
+    ],
+    "trivy": [
+     "FAIL",
+     "PASS"
+    ]
+   },
+   "validated_checks": [
+    "checkov:checkov.CKV_AWS_24",
+    "checkov:checkov.CKV_DOCKER_3",
+    "grype:dependencies",
+    "osv-scanner:dependencies",
+    "semgrep:semgrep.sentinel-backend-hardcoded-secret-key",
+    "semgrep:semgrep.sentinel-backend-insecure-tempfile",
+    "semgrep:semgrep.sentinel-backend-node-path-traversal",
+    "semgrep:semgrep.sentinel-backend-path-traversal",
+    "semgrep:semgrep.sentinel-backend-ssrf-request-url",
+    "semgrep:semgrep.sentinel-backend-xml-external-entities",
+    "semgrep:semgrep.sentinel-python-pickle-load",
+    "semgrep:semgrep.sentinel-python-subprocess-shell",
+    "trivy:dependencies"
+   ]
+  },
+  "D14": {
+   "checks_not_completed": [],
+   "clean_fixtures": 10,
+   "clean_fixtures_with_false_positives": 0,
+   "coverage_states": {
+    "FULL": 19,
+    "NOT_APPLICABLE": 1
+   },
+   "detected_issues": 11,
+   "expected_issues": 11,
+   "false_positive_findings": 0,
+   "false_positive_fixture_rate": 0.0,
+   "fixtures": [
+    {
+     "false_positives": [],
+     "fixture": "clean-01"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-02"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-03"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-04"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-05"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-06"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-07"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-08"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-09"
+    },
+    {
+     "false_positives": [],
+     "fixture": "clean-10"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-sql-built-from-strings"
+       ],
+       "detected": true,
+       "id": "sql-fstring"
+      }
+     ],
+     "fixture": "vuln-01"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-sql-built-from-strings"
+       ],
+       "detected": true,
+       "id": "sql-concat"
+      }
+     ],
+     "fixture": "vuln-02"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-sql-built-from-strings"
+       ],
+       "detected": true,
+       "id": "sql-percent"
+      }
+     ],
+     "fixture": "vuln-03"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-sql-built-from-strings"
+       ],
+       "detected": true,
+       "id": "sql-format"
+      }
+     ],
+     "fixture": "vuln-04"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-django-raw-formatted"
+       ],
+       "detected": true,
+       "id": "django-raw"
+      }
+     ],
+     "fixture": "vuln-05"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-sqlalchemy-text-formatted"
+       ],
+       "detected": true,
+       "id": "sqlalchemy-text"
+      }
+     ],
+     "fixture": "vuln-06"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-node-query-concatenated"
+       ],
+       "detected": true,
+       "id": "node-sql-concat"
+      }
+     ],
+     "fixture": "vuln-07"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-mongo-where-operator"
+       ],
+       "detected": true,
+       "id": "mongo-where"
+      }
+     ],
+     "fixture": "vuln-08"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "semgrep:semgrep.sentinel-db-connection-without-tls"
+       ],
+       "detected": true,
+       "id": "db-no-tls"
+      }
+     ],
+     "fixture": "vuln-09"
+    },
+    {
+     "expected": [
+      {
+       "by": [
+        "checkov:checkov.CKV_AWS_17"
+       ],
+       "detected": true,
+       "id": "rds-public"
+      },
+      {
+       "by": [
+        "checkov:checkov.CKV_AWS_16"
+       ],
+       "detected": true,
+       "id": "rds-unencrypted"
+      }
+     ],
+     "fixture": "vuln-10"
+    }
+   ],
+   "recall": 1.0,
+   "required_checks": {
+    "checkov": [
+     "FAIL",
+     "NOT_APPLICABLE no_input"
+    ],
+    "semgrep": [
+     "FAIL",
+     "PASS"
+    ],
+    "trivy": [
+     "FAIL",
+     "PASS"
+    ]
+   },
+   "validated_checks": [
+    "checkov:checkov.CKV_AWS_16",
+    "checkov:checkov.CKV_AWS_17",
+    "semgrep:semgrep.sentinel-db-connection-without-tls",
+    "semgrep:semgrep.sentinel-db-django-raw-formatted",
+    "semgrep:semgrep.sentinel-db-mongo-where-operator",
+    "semgrep:semgrep.sentinel-db-node-query-concatenated",
+    "semgrep:semgrep.sentinel-db-sql-built-from-strings",
+    "semgrep:semgrep.sentinel-db-sqlalchemy-text-formatted"
+   ]
+  }
+ },
+ "pins": {
+  "grype_database": "9916b91ae97f8b72c12ddbf6e6091ecba686eb8bf0e88efda5027d0c11ec8faa",
+  "osv_database": "c7c1712dcfa67c27566bb3885c201ee6242f05471d826b48201830683e8689aa",
+  "podman": "sha256:9603079ca32a9fa88f0aa2b3f9e41c9365d7db2dc19c75857a1ec40aee6e5837",
+  "scanners": {
+   "checkov": "docker.io/bridgecrew/checkov@sha256:bfe9d70bb7f044aba49bd99675813445f106dee6072da583f51008cb667f3a63",
+   "gitleaks": "sha256:ba52fb1bfabbcde42f032afad3d6e0b19dff8ed105229a16e7caa338bbc0e84f",
+   "grype": "ghcr.io/anchore/grype@sha256:6a36234da13f9faa327306ac0b3dab3405cfa2b4eb20c8f904125a8707863913",
+   "osv-scanner": "ghcr.io/google/osv-scanner@sha256:4f3b7e2c64b9d38a5febc5a7e4a3dfef1d1362f726dea7a2ef4762b46469fcd0",
+   "semgrep": "docker.io/semgrep/semgrep@sha256:cc1b68266f267878b39739373ea9985b9a78e5d64497dd875c8de100b22695ed",
+   "syft": "docker.io/anchore/syft@sha256:3c70e6d5979364cefdc22b51617a78fd264574d3bd6b4f84a351204147025e2a",
+   "trivy": "ghcr.io/aquasecurity/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb"
+  },
+  "trivy_database": "93c9213779ad33f36a970c748c655a9dd99dc662eba9d05907c47948ba45ddd3"
+ }
+}

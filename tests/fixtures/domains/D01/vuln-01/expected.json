@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "dom-xss-innerhtml",
+   "file": "static/app.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-innerhtml-assignment"
+   ]
+  }
+ ]
+}

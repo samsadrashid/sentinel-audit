@@ -1,0 +1,707 @@
+{
+  "counts": {
+    "build": 6,
+    "dev": 12,
+    "runtime": 3
+  },
+  "lockfile_sha256": "c00af34e133a9b15daa9175f840fff21007737371a4b74b7454642681553bf1a",
+  "native": [
+    {
+      "distribution": "Not redistributed: frameworks are part of macOS and are resolved at load time",
+      "license": "Apple SDK / macOS license (proprietary, part of the OS)",
+      "name": "Apple system frameworks (CryptoKit, Foundation, LocalAuthentication, Security)",
+      "notes": "No third-party source or binary code is copied into the helper.",
+      "status": "approved",
+      "use": "Linked dynamically by native/macos/se-helper/main.swift via -framework flags in build.sh"
+    },
+    {
+      "distribution": "Helper binary is built locally by the operator (build.sh) and is not included in the wheel or sdist",
+      "license": "Apache-2.0 WITH Swift-exception (Runtime Library Exception)",
+      "name": "Swift standard library and runtime",
+      "notes": "Evidence (session 13): the helper built by build.sh (sha256 a6fdd469..., matches the operator pin) links only OS-provided Swift libraries in /usr/lib/swift (libswiftCore, libswiftFoundation overlays, etc., per otool -L); no Swift runtime is copied into the binary. Upstream LICENSE.txt at tag swift-6.4.2-RELEASE (sha256 770af8291f708538d8ff885a0bbc4e045cd700531741c4f99528d435c14d7f55; toolchain reports Apple Swift 6.4.2) is Apache-2.0 with a Runtime Library Exception: portions embedded by compilation may be redistributed without the attribution of sections 4(a), 4(b) and 4(d). Conclusion: the helper is not distributed; if it ever is, no Swift attribution is required for compiler-embedded code, and the OS-provided runtime is not shipped.",
+      "status": "approved",
+      "use": "The helper is compiled with xcrun swiftc; on macOS 14+ the Swift runtime is part of the OS"
+    },
+    {
+      "distribution": "Not redistributed",
+      "license": "Apple Xcode and SDK agreement (proprietary)",
+      "name": "Xcode command-line tools (swiftc, codesign, shasum)",
+      "notes": "Build requirement, not a component of the output.",
+      "status": "approved",
+      "use": "Build-time only"
+    }
+  ],
+  "packages": [
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "cryptography",
+        "cffi"
+      ],
+      "installed": true,
+      "license": "MIT-0",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        }
+      },
+      "markers": [
+        "platform_python_implementation != 'PyPy'"
+      ],
+      "name": "cffi",
+      "project_url": "https://github.com/python-cffi/cffi",
+      "scope": "runtime",
+      "sdist_sha256": "dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "2.1.1"
+    },
+    {
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest",
+        "colorama"
+      ],
+      "installed": false,
+      "license": null,
+      "license_basis": "not installed",
+      "license_files": {},
+      "markers": [
+        "sys_platform == 'win32'"
+      ],
+      "name": "colorama",
+      "scope": "dev",
+      "sdist_sha256": "08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "0.4.6"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "cryptography"
+      ],
+      "installed": true,
+      "license": "Apache-2.0 OR BSD-3-Clause",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "3e0c7c091a948b82533ba98fd7cbb40432d6f1a9acbf85f5922d2f99a93ae6bb"
+        },
+        "LICENSE.APACHE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe"
+        },
+        "LICENSE.BSD": {
+          "present": true,
+          "record_match": true,
+          "sha256": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb"
+        }
+      },
+      "markers": [],
+      "name": "cryptography",
+      "project_url": "https://github.com/pyca/cryptography",
+      "scope": "runtime",
+      "sdist_sha256": "e4cfd68c5f3e0bfdad0d38e023239b96a2fe84146481852dffbcca442c245aa5",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "46.0.7"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest",
+        "iniconfig"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4"
+        }
+      },
+      "markers": [],
+      "name": "iniconfig",
+      "project_url": "https://github.com/pytest-dev/iniconfig",
+      "scope": "dev",
+      "sdist_sha256": "67f4b9c50da0dedf52af349e7749a80a9057a5031199791b906c3bb3ae878960",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "2.3.1"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "mypy",
+        "librt"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "88f9e379c684580053c58e75e296ca2eb243b6edcc6e5357f247310e96eeef8a"
+        }
+      },
+      "markers": [
+        "platform_python_implementation != 'PyPy'"
+      ],
+      "name": "librt",
+      "project_url": "https://github.com/mypyc/librt",
+      "scope": "dev",
+      "sdist_sha256": "ac38d6d8d66bf3d744148dbbc0b8e193e195a51e364ed55e224631f5721891fc",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "0.16.0"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "mypy"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "fdf1cd17f50e1305ed8cfd37467312d27a984648dba622cef70573b5512e4e1b"
+        },
+        "mypy/typeshed/LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe"
+        }
+      },
+      "markers": [],
+      "name": "mypy",
+      "project_url": "https://www.mypy-lang.org/",
+      "scope": "dev",
+      "sdist_sha256": "e8222c26daaafd9e8626dec58ae36029f82585890589576f769a650dd20fd665",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.20.2"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "mypy",
+        "mypy-extensions"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "a50450da1d53cd777b80ced77c58ff96abe0ccd879706bd142c3ec20e245f0b4"
+        }
+      },
+      "markers": [],
+      "name": "mypy-extensions",
+      "project_url": "https://github.com/python/mypy_extensions",
+      "scope": "dev",
+      "sdist_sha256": "c6e275a07f1c2fc096b62940452d0eaa3f3af7de45d704787866240a7c6d5a51",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.2.0"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest",
+        "packaging"
+      ],
+      "installed": true,
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        "LICENSE.APACHE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        "LICENSE.BSD": {
+          "present": true,
+          "record_match": true,
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        }
+      },
+      "markers": [],
+      "name": "packaging",
+      "project_url": "https://github.com/pypa/packaging",
+      "scope": "dev",
+      "sdist_sha256": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "26.3"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "dependency_path": [
+        "sentinel-audit",
+        "mypy",
+        "pathspec"
+      ],
+      "installed": true,
+      "license": null,
+      "license_basis": "classifier only",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      },
+      "markers": [],
+      "name": "pathspec",
+      "project_url": "https://github.com/cpburnz/python-pathspec",
+      "scope": "dev",
+      "sdist_sha256": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.1.1"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest",
+        "pluggy"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License field (single identifier)",
+      "license_field": "MIT",
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+        }
+      },
+      "markers": [],
+      "name": "pluggy",
+      "project_url": "https://github.com/pytest-dev/pluggy",
+      "scope": "dev",
+      "sdist_sha256": "d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.7.0"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "cryptography",
+        "cffi",
+        "pycparser"
+      ],
+      "installed": true,
+      "license": "BSD-3-Clause",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90"
+        }
+      },
+      "markers": [
+        "implementation_name != 'PyPy'"
+      ],
+      "name": "pycparser",
+      "project_url": "https://github.com/eliben/pycparser",
+      "scope": "runtime",
+      "sdist_sha256": "f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "3.12"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest",
+        "pygments"
+      ],
+      "installed": true,
+      "license": "BSD-2-Clause",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "AUTHORS": {
+          "present": true,
+          "record_match": true,
+          "sha256": "71a83872ad82f57be692cf827e048e2cd51d45169cfa1ea3f28706d97a872c0f"
+        },
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+        }
+      },
+      "markers": [],
+      "name": "pygments",
+      "project_url": "https://pygments.org",
+      "scope": "dev",
+      "sdist_sha256": "610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "2.21.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "dependency_path": [
+        "sentinel-audit",
+        "pytest"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License field (single identifier)",
+      "license_field": "MIT",
+      "license_files": {
+        "AUTHORS": {
+          "present": true,
+          "record_match": true,
+          "sha256": "c2017d6288262cf9c39aecc8e51df3422a9f2bbca1e4b55d28491022070c7577"
+        },
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+        }
+      },
+      "markers": [],
+      "name": "pytest",
+      "project_url": "https://docs.pytest.org/en/latest/",
+      "scope": "dev",
+      "sdist_sha256": "86c0d0b93306b961d58d62a4db4879f27fe25513d4b969df351abdddb3c30e01",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "8.4.2"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "ruff"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "2597d854122b77ddc71971564ca2350a37608575ce324adc5650a2b2051c8f18"
+        }
+      },
+      "markers": [],
+      "name": "ruff",
+      "project_url": "https://github.com/astral-sh/ruff",
+      "scope": "dev",
+      "sdist_sha256": "f32d178b50e826e00f6c6c1be3f56333068acb9b67fe167143527fa9b81e890d",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "0.17.4"
+    },
+    {
+      "classifiers": [],
+      "dependency_path": [
+        "sentinel-audit",
+        "mypy",
+        "typing-extensions"
+      ],
+      "installed": true,
+      "license": "PSF-2.0",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      },
+      "markers": [],
+      "name": "typing-extensions",
+      "project_url": "https://github.com/python/typing_extensions",
+      "scope": "dev",
+      "sdist_sha256": "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5",
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "4.16.0"
+    },
+    {
+      "artifact_sha256": [
+        "415290b84f464d2884303fca8974d38e7b85579069fab02a15db0828fbb1446d",
+        "4c422bd4d554fcff5de5b73e9596f85e41e9f97f7e553d8f7595ecb31a627bef"
+      ],
+      "classifiers": [],
+      "dependency_path": [
+        "build-system",
+        "hatchling"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE.txt": {
+          "present": true,
+          "record_match": true,
+          "sha256": "7f143a8127ad4873862d70854b5bd2abd0085aa73e64fd2b08704a3b9f5c07fc"
+        }
+      },
+      "markers": [],
+      "name": "hatchling",
+      "project_url": "https://hatch.pypa.io/latest/",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.33.0"
+    },
+    {
+      "artifact_sha256": [
+        "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+        "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+      ],
+      "classifiers": [],
+      "dependency_path": [
+        "build-system",
+        "packaging"
+      ],
+      "installed": true,
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        "LICENSE.APACHE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        "LICENSE.BSD": {
+          "present": true,
+          "record_match": true,
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        }
+      },
+      "markers": [],
+      "name": "packaging",
+      "project_url": "https://github.com/pypa/packaging",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "26.3"
+    },
+    {
+      "artifact_sha256": [
+        "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+        "a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189"
+      ],
+      "classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "dependency_path": [
+        "build-system",
+        "pathspec"
+      ],
+      "installed": true,
+      "license": null,
+      "license_basis": "classifier only",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      },
+      "markers": [],
+      "name": "pathspec",
+      "project_url": "https://github.com/cpburnz/python-pathspec",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.1.1"
+    },
+    {
+      "artifact_sha256": [
+        "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec",
+        "d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8"
+      ],
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "dependency_path": [
+        "build-system",
+        "pluggy"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License field (single identifier)",
+      "license_field": "MIT",
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+        }
+      },
+      "markers": [],
+      "name": "pluggy",
+      "project_url": "https://github.com/pytest-dev/pluggy",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "1.7.0"
+    },
+    {
+      "artifact_sha256": [
+        "05562412163a3037b94497385fb7f9204c637bc605af7a48199e41cf2272f437",
+        "83e32755ba1d20d9340bd069ee97e9f6232ba2346b63ffcba425de01f7e327a6"
+      ],
+      "classifiers": [],
+      "dependency_path": [
+        "build-system",
+        "tomlkit"
+      ],
+      "installed": true,
+      "license": "MIT",
+      "license_basis": "License-Expression",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        }
+      },
+      "markers": [],
+      "name": "tomlkit",
+      "project_url": "https://github.com/python-poetry/tomlkit",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "0.15.2"
+    },
+    {
+      "artifact_sha256": [
+        "0a9ebc8d4e2f3e8a22848c5258033035bec17a3012ac3fea16dbaa764489eb71",
+        "8b1ff4f9c191b1040b71c37f1e445ab99732911e3cd91de52838453a854d7a17"
+      ],
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "dependency_path": [
+        "build-system",
+        "trove-classifiers"
+      ],
+      "installed": true,
+      "license": null,
+      "license_basis": "classifier only",
+      "license_field": null,
+      "license_files": {
+        "LICENSE": {
+          "present": true,
+          "record_match": true,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      },
+      "markers": [],
+      "name": "trove-classifiers",
+      "project_url": "https://github.com/pypa/trove-classifiers",
+      "scope": "build",
+      "sdist_sha256": null,
+      "source": {
+        "lock": "licenses/build-lock.txt",
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "2026.9.21.13"
+    }
+  ],
+  "root": {
+    "license": "MIT",
+    "name": "sentinel-audit",
+    "version": "0.1.0.dev1"
+  },
+  "schema": "sentinel.license-inventory/1"
+}

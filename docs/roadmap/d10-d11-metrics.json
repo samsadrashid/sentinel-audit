@@ -1,0 +1,95 @@
+{
+ "areas": {
+  "agent": {
+   "adversarial": 1,
+   "adversarial_detected": 0,
+   "clean": 6,
+   "clean_with_findings": 0,
+   "detected": 7,
+   "false_positive_case_rate": 0.0,
+   "false_positives": [],
+   "missed": [
+    {
+     "adversarial": true,
+     "case": "v-v08",
+     "note": "adversarial: interpreter one-liners"
+    }
+   ],
+   "recall": 0.875,
+   "recall_non_adversarial": 1.0,
+   "vulnerable": 8
+  },
+  "ext": {
+   "adversarial": 1,
+   "adversarial_detected": 1,
+   "clean": 10,
+   "clean_with_findings": 0,
+   "detected": 14,
+   "false_positive_case_rate": 0.0,
+   "false_positives": [],
+   "missed": [],
+   "recall": 1.0,
+   "recall_non_adversarial": 1.0,
+   "vulnerable": 14
+  },
+  "mcp": {
+   "adversarial": 1,
+   "adversarial_detected": 0,
+   "clean": 8,
+   "clean_with_findings": 0,
+   "detected": 9,
+   "false_positive_case_rate": 0.0,
+   "false_positives": [],
+   "missed": [
+    {
+     "adversarial": true,
+     "case": "v-v10",
+     "note": "adversarial: shell hidden behind env"
+    }
+   ],
+   "recall": 0.9,
+   "recall_non_adversarial": 1.0,
+   "vulnerable": 10
+  },
+  "t2": {
+   "adversarial": 5,
+   "adversarial_detected": 0,
+   "clean": 8,
+   "clean_with_findings": 0,
+   "detected": 9,
+   "false_positive_case_rate": 0.0,
+   "false_positives": [],
+   "missed": [
+    {
+     "adversarial": true,
+     "case": "v-a01",
+     "note": "adversarial: paraphrase"
+    },
+    {
+     "adversarial": true,
+     "case": "v-a02",
+     "note": "adversarial: punctuation obfuscation"
+    },
+    {
+     "adversarial": true,
+     "case": "v-a03",
+     "note": "adversarial: base64"
+    },
+    {
+     "adversarial": true,
+     "case": "v-a04",
+     "note": "adversarial: German"
+    },
+    {
+     "adversarial": true,
+     "case": "v-a05",
+     "note": "adversarial: multi-step exfiltration"
+    }
+   ],
+   "recall": 0.6429,
+   "recall_non_adversarial": 1.0,
+   "vulnerable": 14
+  }
+ },
+ "corpus": "tests/fixtures/d10d11 (synthetic, repository-authored)"
+}

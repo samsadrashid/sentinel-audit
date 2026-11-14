@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ide.install_script"
+ ],
+ "adversarial": false,
+ "note": "install hook"
+}

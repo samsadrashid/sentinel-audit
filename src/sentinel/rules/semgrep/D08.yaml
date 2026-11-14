@@ -1,0 +1,43 @@
+# D08 Backend (provisional, D-59). Sentinel-authored rules only (D-55), MIT.
+rules:
+  - id: sentinel-backend-ssrf-request-url
+    languages: [python]
+    severity: ERROR
+    message: An outbound HTTP request uses a URL taken from the incoming request (SSRF).
+    pattern-either:
+      - pattern: requests.$M(flask.request.args.get(...), ...)
+      - pattern: requests.$M(flask.request.args[...], ...)
+      - pattern: urllib.request.urlopen(flask.request.args.get(...), ...)
+  - id: sentinel-backend-path-traversal
+    languages: [python]
+    severity: ERROR
+    message: A file path is built from request input (path traversal).
+    pattern-either:
+      - pattern: open(os.path.join($BASE, flask.request.args.get(...)), ...)
+      - pattern: flask.send_file(flask.request.args.get(...), ...)
+      - pattern: open(flask.request.args.get(...), ...)
+  - id: sentinel-backend-insecure-tempfile
+    languages: [python]
+    severity: WARNING
+    message: tempfile.mktemp is race-prone; use mkstemp or NamedTemporaryFile.
+    pattern: tempfile.mktemp(...)
+  - id: sentinel-backend-hardcoded-secret-key
+    languages: [python]
+    severity: WARNING
+    message: The web framework's secret key is hard-coded.
+    pattern-either:
+      - pattern: $APP.secret_key = "..."
+      - pattern: $APP.config["SECRET_KEY"] = "..."
+  - id: sentinel-backend-xml-external-entities
+    languages: [python]
+    severity: ERROR
+    message: The XML parser resolves external entities (XXE).
+    pattern: lxml.etree.XMLParser(..., resolve_entities=True, ...)
+  - id: sentinel-backend-node-path-traversal
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: A file path is taken from the request (path traversal).
+    pattern-either:
+      - pattern: fs.readFile($REQ.query.$P, ...)
+      - pattern: fs.readFileSync($REQ.query.$P, ...)
+      - pattern: $RES.sendFile($REQ.query.$P, ...)

@@ -1,0 +1,7 @@
+{
+ "area": "agent",
+ "kind": "clean",
+ "expect": [],
+ "adversarial": false,
+ "note": "sandboxed"
+}

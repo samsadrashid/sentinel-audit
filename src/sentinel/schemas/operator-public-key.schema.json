@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:operator-public-key:v1",
+  "title": "Sentinel operator-public-key (v1)",
+  "$comment": "Public-only operator key file, or a D-47 recovery credential (public key, credential id, rp_id, ES256). The legacy handle-on-disk Secure Enclave form is refused.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "algorithm": {
+          "const": "ecdsa-p256-sha256",
+          "$comment": "D-47: operator keys are P-256 only"
+        },
+        "public_hex": {
+          "$ref": "common.schema.json#/$defs/hexstring"
+        }
+      },
+      "required": [
+        "algorithm",
+        "key_id",
+        "public_hex"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "algorithm": {
+          "const": "ecdsa-p256-sha256"
+        },
+        "public_hex": {
+          "$ref": "common.schema.json#/$defs/hexstring"
+        },
+        "role": {
+          "const": "recovery"
+        },
+        "credential_id_b64": {
+          "$ref": "common.schema.json#/$defs/base64"
+        },
+        "rp_id": {
+          "const": "sentinel-recovery.invalid"
+        },
+        "cose_alg": {
+          "const": -7
+        }
+      },
+      "required": [
+        "algorithm",
+        "cose_alg",
+        "credential_id_b64",
+        "key_id",
+        "public_hex",
+        "role",
+        "rp_id"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "name": "ext",
+ "version": "1.0.0",
+ "engines": {
+  "vscode": "^1.90.0"
+ },
+ "main": "./out/e.js",
+ "capabilities": {
+  "untrustedWorkspaces": {
+   "supported": true
+  }
+ }
+}

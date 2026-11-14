@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:adapter-findings:v1",
+  "title": "Sentinel adapter-findings (v1)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "rule": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "file": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "line": {
+        "type": "integer"
+      },
+      "message": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "severity": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "liveness": {
+        "type": "string",
+        "enum": [
+          "live",
+          "test",
+          "unknown"
+        ]
+      },
+      "package": {
+        "type": "string",
+        "maxLength": 300
+      },
+      "aliases": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "maxItems": 50
+      },
+      "resource": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "db_snapshot": {
+        "$ref": "common.schema.json#/$defs/hex64"
+      },
+      "plugin": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "manifest_sha256": {
+            "$ref": "common.schema.json#/$defs/hex64"
+          },
+          "entry_sha256": {
+            "$ref": "common.schema.json#/$defs/hex64"
+          }
+        },
+        "required": [
+          "entry_sha256",
+          "manifest_sha256",
+          "name",
+          "version"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "file",
+      "line",
+      "message",
+      "rule",
+      "severity"
+    ],
+    "additionalProperties": false
+  },
+  "maxItems": 100000
+}

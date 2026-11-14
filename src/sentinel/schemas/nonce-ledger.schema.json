@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:nonce-ledger:v1",
+  "title": "Sentinel nonce-ledger (v1)",
+  "type": "object",
+  "properties": {
+    "nonces": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9a-f]{32}$": {
+          "type": "object",
+          "properties": {
+            "payload_hash": {
+              "$ref": "common.schema.json#/$defs/hex64"
+            },
+            "one_time": {
+              "type": "boolean"
+            },
+            "expires_at": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "expires_at",
+            "one_time",
+            "payload_hash"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "revoked": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/hex64"
+      }
+    }
+  },
+  "required": [
+    "nonces",
+    "revoked"
+  ],
+  "additionalProperties": false
+}

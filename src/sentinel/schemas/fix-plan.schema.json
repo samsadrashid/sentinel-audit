@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:fix-plan:v1",
+  "title": "Sentinel read-only remediation plan (v1, D-50)",
+  "$defs": {
+    "plan": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "sentinel/v1/fix-plan"
+        },
+        "plan_version": {
+          "const": "1.0"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/run_id"
+        },
+        "manifest_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        },
+        "result_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        },
+        "run_key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "overall_result": {
+          "$ref": "common.schema.json#/$defs/overall"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "finding": {
+                "$ref": "common.schema.json#/$defs/hex64"
+              },
+              "rule": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "severity": {
+                "$ref": "common.schema.json#/$defs/severity"
+              },
+              "confidence": {
+                "$ref": "common.schema.json#/$defs/confidence"
+              },
+              "finding_state": {
+                "$ref": "common.schema.json#/$defs/finding_state"
+              },
+              "location": {
+                "$ref": "common.schema.json#/$defs/location"
+              },
+              "component": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/hex64"
+                },
+                "uniqueItems": true
+              },
+              "step": {
+                "type": "string",
+                "maxLength": 8192
+              },
+              "check_after_fix": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "requires_operator_review": {
+                "const": true
+              },
+              "remediation_verified": {
+                "const": false
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "check_after_fix",
+              "component",
+              "confidence",
+              "evidence",
+              "finding",
+              "finding_state",
+              "location",
+              "remediation_verified",
+              "requires_operator_review",
+              "rule",
+              "severity",
+              "step",
+              "title"
+            ]
+          },
+          "maxItems": 100000
+        },
+        "excluded": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "finding": {
+                "$ref": "common.schema.json#/$defs/hex64"
+              },
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "suppress",
+                  "review.accept_risk",
+                  "false_positive",
+                  "accepted_risk"
+                ]
+              }
+            },
+            "required": [
+              "finding",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "counts": {
+          "type": "object",
+          "properties": {
+            "critical": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "high": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "medium": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "low": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "informational": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "critical",
+            "high",
+            "informational",
+            "low",
+            "medium"
+          ],
+          "additionalProperties": false
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "counts",
+        "excluded",
+        "items",
+        "kind",
+        "manifest_sha256",
+        "note",
+        "overall_result",
+        "plan_version",
+        "result_sha256",
+        "run_id",
+        "run_key_id"
+      ]
+    }
+  },
+  "$ref": "#/$defs/plan"
+}

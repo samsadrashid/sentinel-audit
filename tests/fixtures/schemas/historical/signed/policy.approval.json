@@ -1,0 +1,18 @@
+{
+ "payload": {
+  "action": "policy.change",
+  "context": "sentinel/v1/approval/policy.change",
+  "expires_at": 1800003600,
+  "issued_at": 1800000000,
+  "key_id": "ed25519:6e8867e6e7dfad3fd0811f3a43e9a784",
+  "nonce": "bc6bd6425b8fd96bee7cb3b96d179d15",
+  "rationale": "test",
+  "revision": "policy-prev:none",
+  "scope": {},
+  "subject": {
+   "sha256": "08f6002d0a1b32a17a284eb213dc4610f8f24be56ee3974f9ebfeb2a2966d4cd",
+   "type": "policy_file"
+  }
+ },
+ "signature": "LLsvEbc9WyC4Nh5rnPlkCJFNmwgcsRWROvrhOVce2vpViET1/J18VEEp8yi9MKMqGjvL5LDsVDQIrsgPYKUcAQ=="
+}

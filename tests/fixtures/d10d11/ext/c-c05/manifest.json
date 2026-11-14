@@ -1,0 +1,15 @@
+{
+ "manifest_version": 3,
+ "name": "x",
+ "version": "1.0",
+ "web_accessible_resources": [
+  {
+   "resources": [
+    "a.png"
+   ],
+   "matches": [
+    "https://app.example.invalid/*"
+   ]
+  }
+ ]
+}

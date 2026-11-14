@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.web_accessible_all"
+ ],
+ "adversarial": false,
+ "note": "resources exposed to all sites"
+}

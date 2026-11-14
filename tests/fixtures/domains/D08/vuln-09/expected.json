@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "ssh-open-world",
+   "file": "main.tf",
+   "any_of": [
+    "checkov:checkov.CKV_AWS_24"
+   ]
+  }
+ ]
+}

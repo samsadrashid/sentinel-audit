@@ -1,0 +1,1 @@
+{"audit_log_entries": 1, "evidence_files": 1, "exit_code": 0, "integrity_note": "Valid relative to the run key only (D-34).", "manifest_signature": "valid", "result_matches_manifest": true, "run_id": "01a1bf1f-7795-7192-866e-318c1b7c8c54", "run_key_id": "ed25519:c375793b3b9fda070911026c967472ae"}

@@ -1,0 +1,9 @@
+{
+ "area": "mcp",
+ "kind": "vulnerable",
+ "expect": [
+  "mcp.plaintext_remote"
+ ],
+ "adversarial": false,
+ "note": "plaintext remote"
+}

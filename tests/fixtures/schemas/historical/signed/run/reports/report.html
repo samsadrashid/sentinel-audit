@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<title>Sentinel audit 01a1bf20-c595-7ec2-a411-5f800d9d0f9e</title>
+<style>body{font-family:system-ui;margin:2rem;max-width:70rem}td,th{border:1px solid #999;padding:4px}
+table{border-collapse:collapse}</style></head><body>
+<h1>Sentinel audit 01a1bf20-c595-7ec2-a411-5f800d9d0f9e</h1>
+<p><strong>Overall:</strong> FAIL &middot; <strong>State:</strong> Completed
+&middot; <strong>Mode/level:</strong> READ/L2</p>
+<p><strong>Data boundary:</strong> Sentinel engine processing is local only: in V1 the engine has no feature that sends source code, evidence or findings to any external service.</p>
+<p><em>This report lists what Sentinel checked and found. It is not a statement that the target is secure. Checks that did not run are listed explicitly.</em></p>
+<h2>Checks</h2><table><tr><th>Check</th><th>Status</th><th>Reason</th></tr><tr><td>app/fixture</td><td>FAIL</td><td></td></tr></table>
+<h2>Findings</h2><table><tr><th>Severity</th><th>Confidence</th><th>State</th><th>Rule</th><th>Title</th><th>Location</th></tr>
+<tr><td>medium</td><td>medium</td><td>suspected</td><td>fixture.marker</td><td>fixture marker present</td><td>a.txt:2</td></tr></table><h2>Human-verified without deterministic evidence</h2><ul><li>None.</li></ul><h2>Exclusions (suppressed and accepted risk)</h2><ul><li>None.</li></ul><h2>Integrity</h2><p>The manifest and audit log are signed with the automatic run key. A valid signature shows integrity relative to that key only. It does not detect a same-user process that can rewrite the run folder and use the run key (D-34). A signature never proves that a finding is real.</p></body></html>

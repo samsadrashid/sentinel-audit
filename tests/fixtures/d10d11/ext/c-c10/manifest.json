@@ -1,0 +1,11 @@
+{
+ "manifest_version": 3,
+ "name": "x",
+ "version": "1.0",
+ "permissions": [
+  "storage"
+ ],
+ "optional_permissions": [
+  "alarms"
+ ]
+}

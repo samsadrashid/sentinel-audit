@@ -1,0 +1,46 @@
+# D14 Database (provisional, D-59). Sentinel-authored rules only (D-55), MIT.
+rules:
+  - id: sentinel-db-sql-built-from-strings
+    languages: [python]
+    severity: ERROR
+    message: An SQL statement is built by string formatting or concatenation (SQL injection); use parameters.
+    pattern-either:
+      - pattern: $CUR.execute(f"...", ...)
+      - pattern: $CUR.execute("..." + $X, ...)
+      - pattern: $CUR.execute("..." % $X, ...)
+      - pattern: $CUR.execute("...".format(...), ...)
+      - pattern: $CUR.executemany(f"...", ...)
+  - id: sentinel-db-django-raw-formatted
+    languages: [python]
+    severity: ERROR
+    message: Django raw() with a formatted query string (SQL injection).
+    pattern-either:
+      - pattern: $M.objects.raw(f"...", ...)
+      - pattern: $M.objects.raw("..." % $X, ...)
+      - pattern: $M.objects.raw("..." + $X, ...)
+  - id: sentinel-db-sqlalchemy-text-formatted
+    languages: [python]
+    severity: ERROR
+    message: sqlalchemy.text() with a formatted string (SQL injection).
+    pattern-either:
+      - pattern: sqlalchemy.text(f"...")
+      - pattern: sqlalchemy.text("..." + $X)
+  - id: sentinel-db-node-query-concatenated
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: An SQL query is built by string concatenation (SQL injection); use placeholders.
+    pattern-either:
+      - pattern: $DB.query("..." + $X, ...)
+      - pattern: $DB.query(`...${$X}...`, ...)
+  - id: sentinel-db-mongo-where-operator
+    languages: [python, javascript, typescript]
+    severity: WARNING
+    message: The MongoDB $where operator executes JavaScript; avoid it with untrusted input.
+    pattern-regex: '["'']\$where["'']\s*:'
+  - id: sentinel-db-connection-without-tls
+    languages: [python]
+    severity: WARNING
+    message: Database connection explicitly disables TLS.
+    pattern-either:
+      - pattern: psycopg2.connect(..., sslmode="disable", ...)
+      - pattern: pymysql.connect(..., ssl_disabled=True, ...)

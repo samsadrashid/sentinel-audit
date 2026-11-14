@@ -1,0 +1,61 @@
+# Engine CI (M1 task 7): lint, format, strict typing, the strict licence gate, the architecture-docs
+# checker and the full test suite, on macOS and Linux.
+#
+# Hardware-dependent tests are reported separately from software results: the Secure Enclave helper
+# tests skip on hosts without a usable Secure Enclave (GitHub-hosted runners have none), and the macOS
+# Seatbelt tests skip on Linux. Neither can pass in CI by accident. The security mutation campaign is a
+# local release gate (scripts/mutation/harness.py), not part of this workflow.
+name: engine-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: engine-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  engine:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-26, ubuntu-24.04]  # macos-14 was retired by GitHub on 2026-11-02
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      SENTINEL_CI: "1"  # tests that build the wheel and sdist must run, never skip
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, pinned by commit
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5, pinned by commit
+        with:
+          version: "0.11.17"
+      - name: Install locked dev environment (lockfile hashes enforced)
+        run: |
+          uv lock --check
+          uv sync --frozen --python 3.13
+      - name: Install the hash-pinned build backend the licence audit inspects
+        run: |
+          uv venv --python 3.13 build/license-env
+          uv pip install --python build/license-env/bin/python --require-hashes -r licenses/build-lock.txt
+      - name: Cache the pinned build backend for offline builds
+        run: uv build -o build/ci-dist
+      - name: Ruff
+        run: .venv/bin/ruff check .
+      - name: Format
+        run: .venv/bin/ruff format --check .
+      - name: mypy --strict
+        run: .venv/bin/mypy --strict src scripts/mutation
+      - name: Strict licence audit
+        run: .venv/bin/python scripts/license_audit.py check --strict
+      - name: Architecture docs checker
+        run: .venv/bin/python scripts/docs/check_architecture_docs.py .
+      - name: Full test suite
+        run: .venv/bin/python -m pytest -p no:randomly -rs

@@ -1,0 +1,20 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "rds-public",
+   "file": "rds.tf",
+   "any_of": [
+    "checkov:checkov.CKV_AWS_17"
+   ]
+  },
+  {
+   "id": "rds-unencrypted",
+   "file": "rds.tf",
+   "any_of": [
+    "checkov:checkov.CKV_AWS_16"
+   ]
+  }
+ ]
+}

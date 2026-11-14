@@ -1,0 +1,344 @@
+{
+  "_comment": "Human-reviewed license register. Each entry records what a reviewer verified. Any change in version, scope, license or license-file hash fails `scripts/license_audit.py check` until re-reviewed. accepted_issues may only acknowledge known, reviewed gaps.",
+  "native": [
+    {
+      "distribution": "Not redistributed: frameworks are part of macOS and are resolved at load time",
+      "license": "Apple SDK / macOS license (proprietary, part of the OS)",
+      "name": "Apple system frameworks (CryptoKit, Foundation, LocalAuthentication, Security)",
+      "notes": "No third-party source or binary code is copied into the helper.",
+      "status": "approved",
+      "use": "Linked dynamically by native/macos/se-helper/main.swift via -framework flags in build.sh"
+    },
+    {
+      "distribution": "Helper binary is built locally by the operator (build.sh) and is not included in the wheel or sdist",
+      "license": "Apache-2.0 WITH Swift-exception (Runtime Library Exception)",
+      "name": "Swift standard library and runtime",
+      "notes": "Evidence (session 13): the helper built by build.sh (sha256 a6fdd469..., matches the operator pin) links only OS-provided Swift libraries in /usr/lib/swift (libswiftCore, libswiftFoundation overlays, etc., per otool -L); no Swift runtime is copied into the binary. Upstream LICENSE.txt at tag swift-6.4.2-RELEASE (sha256 770af8291f708538d8ff885a0bbc4e045cd700531741c4f99528d435c14d7f55; toolchain reports Apple Swift 6.4.2) is Apache-2.0 with a Runtime Library Exception: portions embedded by compilation may be redistributed without the attribution of sections 4(a), 4(b) and 4(d). Conclusion: the helper is not distributed; if it ever is, no Swift attribution is required for compiler-embedded code, and the OS-provided runtime is not shipped.",
+      "status": "approved",
+      "use": "The helper is compiled with xcrun swiftc; on macOS 14+ the Swift runtime is part of the OS"
+    },
+    {
+      "distribution": "Not redistributed",
+      "license": "Apple Xcode and SDK agreement (proprietary)",
+      "name": "Xcode command-line tools (swiftc, codesign, shasum)",
+      "notes": "Build requirement, not a component of the output.",
+      "status": "approved",
+      "use": "Build-time only"
+    }
+  ],
+  "packages": {
+    "build:hatchling": {
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE.txt": "7f143a8127ad4873862d70854b5bd2abd0085aa73e64fd2b08704a3b9f5c07fc"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. License-Expression and LICENSE.txt (RECORD-verified).",
+      "scope": "build",
+      "status": "approved",
+      "version": "1.33.0"
+    },
+    "build:packaging": {
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "license_files": {
+        "LICENSE": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+        "LICENSE.APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "LICENSE.BSD": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. Same version as the dev entry.",
+      "scope": "build",
+      "status": "approved",
+      "version": "26.3"
+    },
+    "build:pathspec": {
+      "accepted_issues": [
+        "ambiguous_license"
+      ],
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": null,
+      "license_files": {
+        "LICENSE": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. No SPDX metadata; classifier MPL 2.0 and shipped LICENSE, reviewed as MPL-2.0 (as the dev entry). Build tool, not distributed.",
+      "reviewed_license": "MPL-2.0",
+      "scope": "build",
+      "status": "approved",
+      "version": "1.1.1"
+    },
+    "build:pluggy": {
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. License field (single identifier) and LICENSE.",
+      "scope": "build",
+      "status": "approved",
+      "version": "1.7.0"
+    },
+    "build:tomlkit": {
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. License-Expression and LICENSE (RECORD-verified).",
+      "scope": "build",
+      "status": "approved",
+      "version": "0.15.2"
+    },
+    "build:trove-classifiers": {
+      "accepted_issues": [
+        "ambiguous_license"
+      ],
+      "attribution": "Build time only; not included in the wheel or sdist, so no attribution is owed by Sentinel.",
+      "license": null,
+      "license_files": {
+        "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "notes": "Evidence (session 13): installed from licenses/build-lock.txt with --require-hashes into build/license-env. No SPDX metadata; classifier 'Apache Software License' and LICENSE text is the Apache License 2.0 (reviewed as Apache-2.0).",
+      "reviewed_license": "Apache-2.0",
+      "scope": "build",
+      "status": "approved",
+      "version": "2026.9.21.13"
+    },
+    "cffi": {
+      "attribution": "MIT-0 needs no attribution; the MIT-licensed cffi/_cffi_gen_src.py requires its copyright and permission notice to be kept in copies or substantial portions (reproduced in THIRD_PARTY_NOTICES).",
+      "embedded_notices": [
+        {
+          "end": 27,
+          "path": "cffi/_cffi_gen_src.py",
+          "sha256": "c94479de91526ec6b7b2c17bfd53aa5d368a78be402531ccfddc99f48198f6cc",
+          "start": 1
+        }
+      ],
+      "license": "MIT-0",
+      "license_files": {
+        "LICENSE": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+      },
+      "notes": "Evidence (session 13): wheel METADATA License-Expression MIT-0, LICENSE text MIT No Attribution (RECORD-verified); sdist cffi-2.1.1.tar.gz downloaded, sha256 matches uv.lock. Per-file scan of the installed wheel found one file under a different license: cffi/_cffi_gen_src.py, integrated from cffi-buildtool, MIT License, Copyright (c) 2024 Rose Davidson; its notice is reproduced in THIRD_PARTY_NOTICES. The sdist also carries vendored libffi 3.4.2 sources (MIT-style, Anthony Green and Red Hat) under src/c/libffi_*; on macOS the extension links the system /usr/lib/libffi.dylib (otool -L), so libffi is not embedded in the macOS wheel. Windows wheels may embed libffi; not verified here. Effective terms for the macOS wheel: MIT-0 AND MIT.",
+      "reviewed_license": "MIT-0",
+      "scope": "runtime",
+      "status": "approved",
+      "version": "2.1.1"
+    },
+    "colorama": {
+      "accepted_issues": [
+        "not_installed"
+      ],
+      "attribution": "Not distributed by Sentinel (Windows-only development dependency).",
+      "license": null,
+      "license_files": {},
+      "notes": "Evidence (session 13): not installed on macOS (only required when sys_platform == 'win32', dev-only via pytest). Verified from artifacts instead: wheel colorama-0.4.6-py2.py3-none-any.whl and sdist colorama-0.4.6.tar.gz downloaded from PyPI, both sha256 match uv.lock. METADATA has no License-Expression; classifier 'License :: OSI Approved :: BSD License'; LICENSE.txt (sha256 cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318, identical in wheel) is 'Copyright (c) 2010 Jonathan Hartley' with three conditions including non-endorsement, which matches the BSD-3-Clause template (reviewer judgment from the text). Not distributed by Sentinel.",
+      "reviewed_license": "BSD-3-Clause",
+      "scope": "dev",
+      "status": "approved",
+      "version": "0.4.6"
+    },
+    "cryptography": {
+      "attribution": "Sentinel does not redistribute cryptography; it is installed from PyPI. A redistributor of cryptography's binary wheel must keep cryptography's LICENSE, LICENSE.APACHE and LICENSE.BSD and OpenSSL's Apache-2.0 license (Apache-2.0 section 4); Rust crate licenses (MIT/Apache-2.0/BSD-3-Clause) also require their notices when redistributed in binary form.",
+      "embedded": [
+        "OpenSSL 3.5.6, statically linked: Apache-2.0 (upstream LICENSE.txt, sha256 7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a)",
+        "Rust crates per sdist Cargo.lock (36 registry crates, crates.io-declared licenses: MIT, Apache-2.0, BSD-3-Clause, MIT OR Apache-2.0, Apache-2.0 WITH LLVM-exception, (MIT OR Apache-2.0) AND Unicode-3.0)"
+      ],
+      "license": "Apache-2.0 OR BSD-3-Clause",
+      "license_files": {
+        "LICENSE": "3e0c7c091a948b82533ba98fd7cbb40432d6f1a9acbf85f5922d2f99a93ae6bb",
+        "LICENSE.APACHE": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe",
+        "LICENSE.BSD": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb"
+      },
+      "notes": "Evidence (session 13): wheel METADATA License-Expression 'Apache-2.0 OR BSD-3-Clause' and its three license files (RECORD-verified); sdist cryptography-46.0.7.tar.gz downloaded from PyPI, sha256 matches uv.lock, same expression and files. Embedded: OpenSSL is statically linked (otool -L shows no libssl/libcrypto dependency; the binary reports 'OpenSSL 3.5.6 7 Apr 2026'); OpenSSL 3.5.6 LICENSE.txt fetched from the upstream openssl-3.5.6 tag is Apache-2.0 and is reproduced in THIRD_PARTY_NOTICES; upstream has no NOTICE file at that tag (HTTP 404), nor does cryptography 46.0.7. Rust crates: the 36 registry crates in the sdist's Cargo.lock were checked against crates.io (all checksums match); declared licenses are all permissive: MIT, Apache-2.0, BSD-3-Clause, MIT OR Apache-2.0, 'Apache-2.0 WITH LLVM-exception' (target-lexicon, build-time only) and '(MIT OR Apache-2.0) AND Unicode-3.0' (unicode-ident, used by proc macros at build time). Crate license texts were not individually copied; crates.io metadata is the declared license, not verified text.",
+      "reviewed_license": "Apache-2.0 OR BSD-3-Clause",
+      "scope": "runtime",
+      "status": "approved",
+      "upstream_texts": [
+        {
+          "component": "OpenSSL 3.5.6 (statically linked in cryptography wheels)",
+          "file": "licenses/texts/openssl-3.5.6-LICENSE.txt",
+          "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+          "source_url": "https://raw.githubusercontent.com/openssl/openssl/openssl-3.5.6/LICENSE.txt"
+        }
+      ],
+      "version": "46.0.7"
+    },
+    "iniconfig": {
+      "attribution": "Not distributed (development tool).",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "2.3.1"
+    },
+    "librt": {
+      "attribution": "Not distributed (development tool).",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "88f9e379c684580053c58e75e296ca2eb243b6edcc6e5357f247310e96eeef8a"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "0.16.0"
+    },
+    "mypy": {
+      "attribution": "Not distributed.",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "fdf1cd17f50e1305ed8cfd37467312d27a984648dba622cef70573b5512e4e1b",
+        "mypy/typeshed/LICENSE": "295f8538c94ae5c3043301cf7cff1c852dab6a786a8ddee471e061b40d5ecabe"
+      },
+      "notes": "Dev-only. Ships a second license file for bundled typeshed stubs (mypy/typeshed/LICENSE).",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "1.20.2"
+    },
+    "mypy-extensions": {
+      "attribution": "Not distributed (development tool).",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "a50450da1d53cd777b80ced77c58ff96abe0ccd879706bd142c3ec20e245f0b4"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "1.2.0"
+    },
+    "packaging": {
+      "attribution": "Not distributed (development tool).",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "license_files": {
+        "LICENSE": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+        "LICENSE.APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "LICENSE.BSD": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "Apache-2.0 OR BSD-2-Clause",
+      "scope": "dev",
+      "status": "approved",
+      "version": "26.3"
+    },
+    "pathspec": {
+      "accepted_issues": [
+        "ambiguous_license"
+      ],
+      "attribution": "MPL-2.0: not distributed by Sentinel.",
+      "license": null,
+      "license_files": {
+        "LICENSE": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+      },
+      "notes": "Dev-only (via mypy). METADATA has no License-Expression; license taken from the trove classifier (MPL 2.0) and the shipped LICENSE file, reviewed as MPL-2.0. MPL-2.0 is file-level copyleft; acceptable for a development tool that is not distributed.",
+      "reviewed_license": "MPL-2.0",
+      "scope": "dev",
+      "status": "approved",
+      "version": "1.1.1"
+    },
+    "pluggy": {
+      "attribution": "Not distributed (development tool).",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+      },
+      "notes": "License from package metadata (License field (single identifier)); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "1.7.0"
+    },
+    "pycparser": {
+      "attribution": "Retain copyright notice, conditions and disclaimer in source and binary redistributions.",
+      "license": "BSD-3-Clause",
+      "license_files": {
+        "LICENSE": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90"
+      },
+      "notes": "BSD-3-Clause per License-Expression and LICENSE text (Copyright (c) 2008-2027, Eli Bendersky). Attribution recorded in session 13.",
+      "reviewed_license": "BSD-3-Clause",
+      "scope": "runtime",
+      "status": "approved",
+      "version": "3.12"
+    },
+    "pygments": {
+      "attribution": "Not distributed (development tool).",
+      "license": "BSD-2-Clause",
+      "license_files": {
+        "AUTHORS": "71a83872ad82f57be692cf827e048e2cd51d45169cfa1ea3f28706d97a872c0f",
+        "LICENSE": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "BSD-2-Clause",
+      "scope": "dev",
+      "status": "approved",
+      "version": "2.21.0"
+    },
+    "pytest": {
+      "attribution": "Not distributed (development tool).",
+      "license": "MIT",
+      "license_files": {
+        "AUTHORS": "c2017d6288262cf9c39aecc8e51df3422a9f2bbca1e4b55d28491022070c7577",
+        "LICENSE": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+      },
+      "notes": "License from package metadata (License field (single identifier)); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "8.4.2"
+    },
+    "ruff": {
+      "attribution": "Not distributed.",
+      "license": "MIT",
+      "license_files": {
+        "LICENSE": "2597d854122b77ddc71971564ca2350a37608575ce324adc5650a2b2051c8f18"
+      },
+      "notes": "Dev-only. Binary embeds many Rust crates (the wheel ships a CycloneDX SBOM, sboms/ruff.cyclonedx.json); not distributed by Sentinel, so embedded crate licenses were not reviewed.",
+      "reviewed_license": "MIT",
+      "scope": "dev",
+      "status": "approved",
+      "version": "0.17.4"
+    },
+    "typing-extensions": {
+      "attribution": "Not distributed (development tool).",
+      "license": "PSF-2.0",
+      "license_files": {
+        "LICENSE": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+      },
+      "notes": "License from package metadata (License-Expression); license file present and its hash matches the package RECORD. License text was not independently classified.",
+      "reviewed_license": "PSF-2.0",
+      "scope": "dev",
+      "status": "approved",
+      "version": "4.16.0"
+    }
+  },
+  "residual_risks": [
+    {
+      "component": "cryptography: statically linked OpenSSL",
+      "id": "LR-1",
+      "not_verified": "cryptography's wheel build process and that the embedded OpenSSL is unmodified upstream 3.5.6",
+      "status": "accepted"
+    },
+    {
+      "component": "cffi: Windows wheels / libffi",
+      "id": "LR-2",
+      "not_verified": "whether Windows wheels embed libffi and its notices",
+      "status": "accepted"
+    },
+    {
+      "component": "cryptography: Rust crates",
+      "id": "LR-3",
+      "not_verified": "per-crate license texts; which crates are linked versus build-only",
+      "status": "accepted"
+    },
+    {
+      "component": "colorama, pathspec, trove-classifiers",
+      "id": "LR-4",
+      "not_verified": "SPDX expressions; licenses are reviewer readings of the shipped texts",
+      "status": "accepted"
+    }
+  ]
+}

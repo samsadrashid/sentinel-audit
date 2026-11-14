@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "xxe",
+   "file": "xmlin.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-backend-xml-external-entities"
+   ]
+  }
+ ]
+}

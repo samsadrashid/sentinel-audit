@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:manifest-signature:v1",
+  "title": "Sentinel manifest-signature (v1)",
+  "type": "object",
+  "properties": {
+    "key_id": {
+      "$ref": "common.schema.json#/$defs/key_id"
+    },
+    "role": {
+      "const": "run"
+    },
+    "context": {
+      "const": "sentinel/v1/run/manifest"
+    },
+    "signature": {
+      "$ref": "common.schema.json#/$defs/base64"
+    }
+  },
+  "required": [
+    "context",
+    "key_id",
+    "role",
+    "signature"
+  ],
+  "additionalProperties": false
+}

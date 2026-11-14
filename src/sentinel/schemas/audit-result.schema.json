@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:audit-result:v1",
+  "title": "Sentinel audit-result (v1)",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version_1"
+    },
+    "sentinel_version": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "audit_id": {
+      "$ref": "common.schema.json#/$defs/run_id"
+    },
+    "mode": {
+      "$ref": "common.schema.json#/$defs/mode"
+    },
+    "level": {
+      "$ref": "common.schema.json#/$defs/level"
+    },
+    "state": {
+      "$ref": "common.schema.json#/$defs/audit_state"
+    },
+    "overall": {
+      "$ref": "common.schema.json#/$defs/overall"
+    },
+    "target": {
+      "$ref": "common.schema.json#/$defs/target"
+    },
+    "authorization_ref": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "policy_source": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/check_result"
+      }
+    },
+    "checks_not_finished": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/check_result"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/finding"
+      }
+    },
+    "summary": {
+      "$ref": "common.schema.json#/$defs/summary"
+    },
+    "decisions": {
+      "$ref": "common.schema.json#/$defs/decision_report"
+    },
+    "disclosure": {
+      "$ref": "common.schema.json#/$defs/disclosure"
+    },
+    "operator_trust_fingerprint": {
+      "$ref": "common.schema.json#/$defs/hex64"
+    },
+    "host_isolation": {
+      "$ref": "common.schema.json#/$defs/host_report"
+    },
+    "integrity_note": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "redaction": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "$ref": "common.schema.json#/$defs/redaction_counts"
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "pii": {
+          "type": "object",
+          "properties": {
+            "covered": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "not_covered": {
+              "$ref": "common.schema.json#/$defs/string_list"
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 4096
+            }
+          },
+          "required": [
+            "covered",
+            "not_covered",
+            "note"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "note",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "discovery": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/discovery_record"
+      },
+      "maxItems": 1000
+    },
+    "control": {
+      "$ref": "common.schema.json#/$defs/control_report"
+    },
+    "domain_coverage": {
+      "$ref": "common.schema.json#/$defs/domain_coverage"
+    },
+    "reproducibility": {
+      "$ref": "common.schema.json#/$defs/reproducibility"
+    },
+    "check_notes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "maxLength": 200
+        }
+      }
+    }
+  },
+  "required": [
+    "audit_id",
+    "authorization_ref",
+    "checks",
+    "checks_not_finished",
+    "decisions",
+    "disclosure",
+    "findings",
+    "host_isolation",
+    "integrity_note",
+    "level",
+    "mode",
+    "operator_trust_fingerprint",
+    "overall",
+    "policy_source",
+    "schema_version",
+    "sentinel_version",
+    "state",
+    "summary",
+    "target"
+  ],
+  "additionalProperties": false
+}

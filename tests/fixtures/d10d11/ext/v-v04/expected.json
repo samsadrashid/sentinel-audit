@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.sensitive_permission"
+ ],
+ "adversarial": false,
+ "note": "debugger API"
+}

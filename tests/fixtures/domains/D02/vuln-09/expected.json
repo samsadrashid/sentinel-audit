@@ -1,0 +1,13 @@
+{
+ "domain": "D02",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "mass-assignment-2",
+   "file": "orders.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-api-mass-assignment"
+   ]
+  }
+ ]
+}

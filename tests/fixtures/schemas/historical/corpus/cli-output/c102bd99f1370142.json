@@ -1,0 +1,1 @@
+{"exit_code": 0, "keys": [{"algorithm": "ecdsa-p256-sha256", "expires_at": 1831536000, "key_id": "p256:24607fd76a964cfc2d1a2c426008bdc9", "operator": "owner", "public_sha256": "063ec28874ce897a6861845075a783e7622e86e73affe749c3b73e465b25467e", "status": "active"}], "trust_fingerprint": "5d7a2d8c624224883c488b4fbeb51c3bd2b8940a363f8b526bcc2ff92cb47098"}

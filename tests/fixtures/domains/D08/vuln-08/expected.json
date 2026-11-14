@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "container-root-user",
+   "file": "Dockerfile",
+   "any_of": [
+    "checkov:checkov.CKV_DOCKER_3"
+   ]
+  }
+ ]
+}

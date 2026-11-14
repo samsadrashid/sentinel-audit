@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:applied-policy:v1",
+  "title": "Sentinel applied-policy (v1)",
+  "type": "object",
+  "properties": {
+    "current": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      ]
+    },
+    "previous": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/hex64"
+        }
+      ]
+    }
+  },
+  "required": [
+    "current",
+    "previous"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ide.activate_always"
+ ],
+ "adversarial": false,
+ "note": "activates on startup"
+}

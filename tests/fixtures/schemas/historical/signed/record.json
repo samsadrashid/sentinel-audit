@@ -1,0 +1,1 @@
+{"approver":"owner","assets":[{"environment":"staging","id":"app","locator":"staging.app.test"}],"evidence_of_authority":{},"exclusions":["staging.app.test/admin*"],"expires_at":1800604800,"id":"rec-1","limits":{},"operations":["http.get"],"owner":"owner","permitted_activities":["A1","S1"],"valid_from":1799999990,"version":1}

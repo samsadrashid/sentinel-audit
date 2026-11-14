@@ -1,0 +1,1 @@
+{"data": {"check": "t/fixture", "reason": "scanner_missing", "status": "NOT_RUN"}, "event": "check.finished", "hash": "9fc9ac14db882e609b2872efb9af5fc1dd8a0a208a7668b39ed65fe00edf2f0e", "prev": "3bf7b5673fbb254a13220f495649f0057fab5a1bed4a9e3287b614ad241d4d5a", "seq": 3, "ts": 1794207890}

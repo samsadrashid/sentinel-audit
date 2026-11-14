@@ -1,0 +1,13 @@
+{
+ "domain": "D14",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "django-raw",
+   "file": "models.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-db-django-raw-formatted"
+   ]
+  }
+ ]
+}

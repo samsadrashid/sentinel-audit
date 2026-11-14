@@ -1,0 +1,7 @@
+{
+ "mcpServers": {
+  "r": {
+   "url": "http://mcp.example.invalid/sse"
+  }
+ }
+}

@@ -1,0 +1,65 @@
+# Sentinel core Semgrep rules. Authored in this repository (D-55), MIT like Sentinel.
+# No registry rules, no remote configuration. The adapter refuses this file if its SHA-256 changes
+# without the pin in sentinel/adapters/scanners.py being updated in the same reviewed change.
+rules:
+  - id: sentinel-python-eval
+    languages: [python]
+    severity: ERROR
+    message: eval() or exec() on a non-literal value can execute attacker-controlled code.
+    patterns:
+      - pattern-either:
+          - pattern: eval($X)
+          - pattern: exec($X)
+      - pattern-not: eval("...")
+      - pattern-not: exec("...")
+  - id: sentinel-python-subprocess-shell
+    languages: [python]
+    severity: ERROR
+    message: subprocess call with shell=True; prefer an argument list without a shell.
+    pattern-either:
+      - pattern: subprocess.$F(..., shell=True, ...)
+      - pattern: os.system(...)
+  - id: sentinel-python-pickle-load
+    languages: [python]
+    severity: ERROR
+    message: pickle deserialisation of untrusted data executes code.
+    pattern-either:
+      - pattern: pickle.load(...)
+      - pattern: pickle.loads(...)
+  - id: sentinel-python-yaml-unsafe-load
+    languages: [python]
+    severity: WARNING
+    message: yaml.load without a safe loader can construct arbitrary objects; use yaml.safe_load.
+    patterns:
+      - pattern: yaml.load(...)
+      - pattern-not: yaml.load(..., Loader=yaml.SafeLoader, ...)
+      - pattern-not: yaml.load(..., Loader=yaml.CSafeLoader, ...)
+  - id: sentinel-python-tls-verify-disabled
+    languages: [python]
+    severity: WARNING
+    message: TLS certificate verification is disabled.
+    pattern: requests.$F(..., verify=False, ...)
+  - id: sentinel-js-eval
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: eval() or Function() on a non-literal value can execute attacker-controlled code.
+    patterns:
+      - pattern-either:
+          - pattern: eval($X)
+          - pattern: new Function(...)
+      - pattern-not: eval("...")
+  - id: sentinel-js-child-process-exec
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: child_process exec runs a shell; prefer execFile or spawn with an argument list.
+    pattern-either:
+      - pattern: require('child_process').exec(...)
+      - pattern: child_process.exec(...)
+      - pattern: exec(`...${$X}...`, ...)
+  - id: sentinel-generic-weak-hash-for-security
+    languages: [python]
+    severity: INFO
+    message: MD5 or SHA-1 is not collision resistant; do not use it for security decisions.
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)

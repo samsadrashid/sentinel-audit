@@ -1,0 +1,13 @@
+{
+ "domain": "D08",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "path-traversal",
+   "file": "files.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-backend-path-traversal"
+   ]
+  }
+ ]
+}

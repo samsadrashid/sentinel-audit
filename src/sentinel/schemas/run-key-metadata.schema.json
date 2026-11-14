@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:run-key-metadata:v1",
+  "title": "Sentinel run-key-metadata (v1)",
+  "type": "object",
+  "properties": {
+    "backend": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "key_id": {
+      "$ref": "common.schema.json#/$defs/key_id"
+    },
+    "public": {
+      "$ref": "common.schema.json#/$defs/hexstring"
+    },
+    "role": {
+      "const": "run"
+    }
+  },
+  "required": [
+    "backend",
+    "key_id",
+    "public",
+    "role"
+  ],
+  "additionalProperties": false
+}

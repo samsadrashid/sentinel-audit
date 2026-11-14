@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:sign-response:v1",
+  "title": "Signing protocol v1 sign response, signing device to DM (D-49); exactly one signature form",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "envelope": {
+          "const": "sentinel/v1/sign-response"
+        },
+        "key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "payload_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        },
+        "request_id": {
+          "$ref": "common.schema.json#/$defs/request_id"
+        },
+        "signature_der_b64": {
+          "$ref": "common.schema.json#/$defs/base64"
+        }
+      },
+      "required": [
+        "envelope",
+        "key_id",
+        "payload_sha256",
+        "request_id",
+        "signature_der_b64"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "envelope": {
+          "const": "sentinel/v1/sign-response"
+        },
+        "key_id": {
+          "$ref": "common.schema.json#/$defs/key_id"
+        },
+        "payload_sha256": {
+          "$ref": "common.schema.json#/$defs/hex64"
+        },
+        "request_id": {
+          "$ref": "common.schema.json#/$defs/request_id"
+        },
+        "webauthn": {
+          "$ref": "common.schema.json#/$defs/webauthn_assertion"
+        }
+      },
+      "required": [
+        "envelope",
+        "key_id",
+        "payload_sha256",
+        "request_id",
+        "webauthn"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

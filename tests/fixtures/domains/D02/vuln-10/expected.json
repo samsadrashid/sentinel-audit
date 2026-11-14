@@ -1,0 +1,20 @@
+{
+ "domain": "D02",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "jwt-unverified-2",
+   "file": "gw.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-api-jwt-signature-not-verified"
+   ]
+  },
+  {
+   "id": "debug-server-2",
+   "file": "gw.py",
+   "any_of": [
+    "semgrep:semgrep.sentinel-api-debug-server"
+   ]
+  }
+ ]
+}

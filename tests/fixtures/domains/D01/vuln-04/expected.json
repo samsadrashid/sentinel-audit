@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "react-raw-html",
+   "file": "src/Comment.jsx",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-react-dangerous-html"
+   ]
+  }
+ ]
+}

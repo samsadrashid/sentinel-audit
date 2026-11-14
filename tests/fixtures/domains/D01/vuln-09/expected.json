@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "js-eval",
+   "file": "static/calc.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-js-eval"
+   ]
+  }
+ ]
+}

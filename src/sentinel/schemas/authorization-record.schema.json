@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sentinel:schema:authorization-record:v1",
+  "title": "Sentinel authorization-record (v1)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "version": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "approver": {
+      "type": "string",
+      "maxLength": 4096
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "locator": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "environment": {
+            "$ref": "common.schema.json#/$defs/environment"
+          }
+        },
+        "required": [
+          "environment",
+          "id",
+          "locator"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "permitted_activities": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/activity_class"
+      }
+    },
+    "operations": {
+      "$ref": "common.schema.json#/$defs/string_list"
+    },
+    "limits": {
+      "type": "object"
+    },
+    "exclusions": {
+      "$ref": "common.schema.json#/$defs/string_list"
+    },
+    "valid_from": {
+      "type": "integer"
+    },
+    "expires_at": {
+      "type": "integer"
+    },
+    "evidence_of_authority": true
+  },
+  "required": [
+    "approver",
+    "assets",
+    "evidence_of_authority",
+    "exclusions",
+    "expires_at",
+    "id",
+    "limits",
+    "operations",
+    "owner",
+    "permitted_activities",
+    "valid_from",
+    "version"
+  ],
+  "additionalProperties": false
+}

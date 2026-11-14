@@ -1,0 +1,13 @@
+{
+ "domain": "D01",
+ "kind": "vulnerable",
+ "expected": [
+  {
+   "id": "dom-xss-document-write",
+   "file": "static/w.js",
+   "any_of": [
+    "semgrep:semgrep.sentinel-web-document-write"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "area": "ext",
+ "kind": "vulnerable",
+ "expect": [
+  "ext.weak_csp"
+ ],
+ "adversarial": false,
+ "note": "eval allowed"
+}
