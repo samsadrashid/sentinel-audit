@@ -521,3 +521,47 @@ Linux acceptance is still not claimed (B-4).
 **Not done:** no release is signed. Every key here is a software test key. The first real
 `release.publish` signature needs SD-T01 to SD-T55, the ceremony and the activation decision. **Verdict
 unchanged: NOT RELEASE READY.**
+
+## 15. Publication (2026-11-14)
+
+**Owner decisions:**
+- "Yes, go public": the repository goes public before the first signed release.
+- "Publish sentinel-audit": a new public repository with one clean commit, instead of making the existing
+  repository public.
+
+The existing repository's pushed history (`fe1763f` to `2ae0fc4`) contained development-Mac identifiers.
+GitHub keeps force-pushed commits reachable by SHA, so rewriting that history was not considered
+sufficient.
+
+**Before publishing:**
+- **Redacted** (`3e82580`, in the private repository): the Apple team ID and certificate ID, the
+  certificate's organisation name, and the macOS account names, across six design and evidence files.
+  The facts the threat model relies on remain, without names. No result or decision changed.
+- **Scanned:** the exact public tree (`git archive` of the commit to be pushed, 829 files):
+  - no personal email, team or certificate ID, local path or account name;
+  - no private portfolio project name (72 names and 173 spelling variants; one earlier scan had run
+    against a missing name list without reporting it, and was redone here);
+  - Gitleaks: only the 6 known synthetic test secrets.
+
+**Published:** `samsadrashid/sentinel-audit` (public), one parentless commit, `1f51261`. Its tree is
+identical to `3e82580`, and its author is the GitHub no-reply address. `samsadrashid/sentinel` stays
+private as the full-history archive.
+
+**Public CI on `1f51261`:** all jobs passed.
+
+| Job | Passed | Failed | Skipped |
+|---|---|---|---|
+| `engine (macos-26)` | 1826 | 0 | 31 |
+| `engine (ubuntu-24.04)` | 1751 | 0 | 106 |
+
+These are the same results as on the private repository.
+
+**Secret scanning:** GitHub enabled secret scanning and push protection. Push protection did not block
+the push. One alert followed: "Amazon AWS Temporary Access Key ID" at `tests/test_m2_secret_class.py:13`,
+validity unknown. It is the synthetic AC-16 classification fixture (a keyboard-row value), and with the
+owner's approval it was resolved as `used_in_tests`. The three AWS-style literals in that file are now
+written as `"AKIA" + "…"`, like the file's other provider formats, so new versions of the file don't
+match again. Their runtime values are unchanged.
+
+**Verdict unchanged: NOT RELEASE READY.** The source is public. No release is signed until the
+signing-device hardware tests, the ceremony and the activation decision.

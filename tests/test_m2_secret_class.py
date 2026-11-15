@@ -9,8 +9,8 @@ import pytest
 from sentinel.secret_class import DOCUMENTED_TEST_VALUES, LIVE, TEST, UNKNOWN, classify
 
 LIVE_FORMAT = [
-    "AKIAZ7Q4HN2KV9PLM3XT",
-    "ASIAQWERTYUIOPASDFGH",
+    "AKIA" + "Z7Q4HN2KV9PLM3XT",
+    "ASIA" + "QWERTYUIOPASDFGH",
     "ghp_" + "a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8",
     "github_pat_" + "A" * 22 + "_" + "b" * 59,
     "glpat-" + "x1Y2z3W4v5U6t7S8r9Q0",
@@ -24,7 +24,7 @@ LIVE_FORMAT = [
 ]
 #: Live formats that also contain a marker word: still live (AC-16's failure condition).
 LIVE_FORMAT_WITH_MARKERS = [
-    "AKIATESTTESTTESTTEST",
+    "AKIA" + "TESTTESTTESTTEST",
     "ghp_" + "test" * 9,
     "sk_live_" + "exampleexampleexample1",
     "xoxb-test-fake-dummy-123",
